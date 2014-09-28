@@ -1,14 +1,8 @@
 #################################################################
 ###
-##  File: Parameters.rb
-##  Desc: The Parameters class processes a text file that has 'name=value' pairs.
-##        The UIMDT SBPS program is an example of a program that produces this kind of file.
-##
-##  TODO: Consider refactoring those files that use this class to use the parseconfig gem
-##        The parseconfig gem also parses files of name = value format.  It goes
-##        further and process lines like [some_name] as section (or group) headers.
-##        It also ignores blank lines and lines that start with the "#" sign.
-
+##  File: IdpTraj.rb
+##  Desc: A short range thing
+#
 
 require 'pathname'
 require 'LlaCoordinate'

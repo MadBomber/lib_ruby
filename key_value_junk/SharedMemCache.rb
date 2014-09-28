@@ -22,7 +22,7 @@ class SharedMemCache
   def initialize(some_observable_class_instance=nil, mc_server=nil, mc_options={:no_reply => true})
   
     if mc_server.nil?
-      mc_ip     = ENV['MC_IP']  || "138.209.52.147"
+      mc_ip     = ENV['MC_IP']  || "127.0.0.1"
       mc_port   = ENV['MC_PORT'] || "11211"
     else
       mc_array  = mc_server.split(':')

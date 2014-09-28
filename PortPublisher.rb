@@ -13,7 +13,7 @@ class PortPublisher
   attr_reader :tcp_port
   attr_reader :connection
 
-  def initialize(tcp_ip='138.209.52.147', tcp_port=50002)
+  def initialize(tcp_ip='127.0.0.1', tcp_port=50002)
   
     @tcp_ip     = tcp_ip
     @tcp_port   = 'String' == tcp_port.class.to_s ? tcp_port.to_i : tcp_port

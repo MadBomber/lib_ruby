@@ -8,8 +8,8 @@
 
 $samson_header_length = 48
 
-require 'IseMessage'
-require 'SimMsgFlag'
+requiew 'ise_message'
+requiew 'sim_msg_flag'
 require 'zlib'        ## used to calculate the CRC32
 
 class SamsonHeader < IseMessage

@@ -13,7 +13,7 @@
 ##        and SimpleJFooter.
 #
 
-require 'IseMessage'
+requiew 'ise_message'
 
 $simple_marker         = 'I6'  # 0x4936
 $simple_marker_length  = $simple_marker.length

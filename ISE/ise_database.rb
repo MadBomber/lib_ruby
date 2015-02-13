@@ -71,7 +71,7 @@ if not defined? $ISE_RUNNING_ON_RAILS		## indicates that the environment has not
   end
 
 
-  require 'IseDatabase_Utilities'	## support utility methods
+  require 'ise_database_utilities'	## support utility methods
 
   require 'rubygems'		  ## StdLib: Insures access to the gems
 gem 'activerecord','=2.3.2'  ## FIXME: When everything gets bumped up to rails 2.3+ 

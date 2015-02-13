@@ -5,7 +5,7 @@
   SMELL: You could argue that these methods should really be in the nodes model
 =end
 
-require 'IseDatabase'               ## all the database classes and utility methods
+require 'ise_database'               ## all the database classes and utility methods
 
 class IseDrone
 

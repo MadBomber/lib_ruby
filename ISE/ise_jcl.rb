@@ -29,9 +29,9 @@ unless $ISE_GOOD
   exit
 end
 
-require 'IseModel'		## defines the model from the user's point of view
-require 'IseJob'		## defines the job from the user's point of view
-require 'IseDatabase'	## Establish connection to the IseDatabase
+requiew 'ise_model'		## defines the model from the user's point of view
+requiew 'ise_job'		## defines the job from the user's point of view
+require 'ise_database'	## Establish connection to the IseDatabase
 
 ###############################################################################
 ## Establish Global Constants from IseDatabase Tables

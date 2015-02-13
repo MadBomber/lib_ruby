@@ -11,7 +11,7 @@
 ##  message.
 #
 
-require 'IseMessage'
+requiew 'ise_message'
 
 ################################
 $simple_common_length = 2

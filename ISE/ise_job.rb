@@ -8,7 +8,7 @@ require 'IseJCL_Utilities'  ## support utilities
 
 dont_execute_me if __FILE__.include?($0)    ## Prevent this file from executing directly
 
-require 'IseModel'
+requiew 'ise_model'
 
 class IseJob
 

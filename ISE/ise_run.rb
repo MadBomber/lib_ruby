@@ -15,7 +15,7 @@
 ##
 
 
-require 'IseDatabase'           ## Access to the main tables in the IseDatabase
+require 'ise_database'           ## Access to the main tables in the IseDatabase
 require 'highline/import'       ## GEM: high-level line oriented console interface
 require 'uuidtools'             ## GEM: various tools for creating globally unique identifiers
 

@@ -5,7 +5,7 @@
 ##        for use with Link-16 messages on the network
 #
 
-require 'IseMessage'
+requiew 'ise_message'
 require 'string_mods'
 
 $link16_common_length = 2   ## in bytes; its really only 13 bits

@@ -1,7 +1,7 @@
 ##############################################################
 ## IseDispatcher is the control class of the ISE dispatchers
 
-require 'IseDatabase'               ## all the database classes and utility methods
+require 'ise_database'               ## all the database classes and utility methods
 
 dont_execute_me if __FILE__.include?($0)    ## Prevent this file from executing directly
 

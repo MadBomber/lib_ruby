@@ -5,7 +5,7 @@
 ##         IseMessage capability to support structured data.
 #
 
-require 'IseMessage'
+requiew 'ise_message'
 
 class BlockMessage < IseMessage
 

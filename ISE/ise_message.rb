@@ -7,11 +7,11 @@
 
 require 'faster_xml_simple'
 
-require 'IseDatabase'
-require 'SimMsgFlag'
-require 'SimMsgType'
+require 'ise_database'
+requiew 'sim_msg_flag'
+requiew 'sim_msg_type'
 
-require 'SamsonMath'
+requiew 'samson_math'
 include SamsonMath
 
 require 'string_mods'

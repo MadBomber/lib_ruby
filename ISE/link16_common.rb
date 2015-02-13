@@ -6,7 +6,7 @@
 ##        Not used for publishing or defining a new Link-16 message.
 #
 
-require 'Link16Message'
+requiew 'link16_message'
 
 ################################
 class Link16Common < Link16Message

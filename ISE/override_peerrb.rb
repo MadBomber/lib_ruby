@@ -8,7 +8,7 @@
 ##
 #
 
-require 'SamsonHeader'
+requiew 'samson_header'
 
 $app_message_cache = Hash.new
 

@@ -17,9 +17,9 @@ The expected order of Link16 components within the SimpleProtocol is:
 
 =end
 
-require 'IseMessage'
-require 'SimpleProtocol'
-require 'Link16Message'
+requiew 'ise_message'
+requiew 'simple_protocol'
+requiew 'link16_message'
 require 'string_mods'
 
 class SimpleJMessage < IseMessage

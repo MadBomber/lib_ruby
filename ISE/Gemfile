@@ -1,0 +1,218 @@
+##################################################################
+###
+##  File:  Gemfile
+##  Desc:  A Ruby Gem configuration file used by the bundler gem.
+##         bundler manages the gem configuration.  It can be used
+##         to fetch the required gems from external internet sources.
+##         The standard external source is rubygems.org
+##
+##  See:  http://rubygems.org/gems/bundler
+##
+##  To load the gem libraries required by ISE do the following sequence:
+##    1) cd $AADSE_ROOT         # must be in the AADSE root directory to start
+##    2) gem update --system    # updates the current system install gem support lib
+##    3) gem install bundler    # installs the latest version of bundler
+##    4) bundle install         # installs into a local directory all gems required by ISE
+##
+##  To package gems into the $AADSE_ROOT/vendor/cache directory do this:
+##    1) bundle package         # locks the bundle and copies all *.gem files into ./vendor/cache
+##
+
+source( "http://rubygems.org" )
+source( "http://gems.github.com" )
+
+gem 'notify'
+gem 'thin', '1.2.7'
+gem 'require_all'
+
+#############################################
+## WebApps Using Rails
+
+gem "rails", "2.3.10"
+gem "rake"
+gem "formtastic",  "0.9.8"      ## May need to revert to "0.9.7" because of problems with latest paperclip
+gem "tabletastic", "0.1.3"
+gem "crummy","0.1.0"
+gem "xebec", "2.3.0"
+#gem "friendly_id", "2.3.2"
+gem "twilson63-nifty-generators", "0.3.8"
+gem "validation_reflection", "0.3.6"
+#gem "enumerated_attribute"			## depends on meta_programming which is only 1.8.7 compatible
+#gem "paperclip", "2.3.1.1"			## having trouble with version 2.3.3
+#gem "carrierwave"              ## potential replacement for paperclip
+#gem "has_many_polymorphs"
+
+
+#############################################
+## Database (ActiveRecord) Helpers
+
+gem "composite_primary_keys", "2.3.5.1"
+gem "mysql"
+gem "sqlite3-ruby"
+
+###############################################
+## Web Services
+
+gem "sinatra"
+gem "sinatra-gen"
+gem "sinatra_more"
+gem "sinatras-hat"
+gem "big_band"
+gem "rest-client"
+#gem "pancake"          # deprecated by Rails 3 engines
+
+
+###############################################
+## Web Servers
+
+# mongrel is not building under 1.9.2-p0
+#gem "mongrel"
+#gem "mongrel_cluster"
+#gem "rack"
+#gem "rack-test"
+
+
+###############################################
+## Web Site Utilities (Javascript, HTML, CSS helpers)
+
+gem "compass"
+gem "bluecloth"
+gem "RedCloth"        # used by IsePortal (dispatcher list)
+gem "haml"
+gem "json_pure"
+gem "tilt"
+gem "tagz"
+
+###############################################
+## File IO
+
+gem "libxml-ruby"
+gem "faster_xml_simple"
+gem "xml-simple"
+gem "rubyzip"
+
+
+###############################################
+## Network IO, HTTP, SNMP, Sockets, TCP, UDP etc.
+
+gem "eventmachine"
+gem "memcache-client"
+gem "snmp"
+#
+gem "net-scp"
+gem "net-sftp"
+gem "net-ssh"
+gem "net-ssh-gateway"
+gem "net-ssh-multi"
+gem "net-ssh-telnet"
+
+
+###############################################
+## Console IO
+
+gem "highline"
+gem "term-ansicolor"
+gem "templater"
+
+
+###############################################
+## Geodesic Support Libraries
+
+gem "geokit"
+gem "GeoRuby"
+gem "tallakt-geoutm"
+gem "vincenty"		unless RUBY_VERSION.include? "1.9"
+
+
+###############################################
+## System-level Utility Libraries
+
+gem "sys-admin"
+gem "sys-cpu"
+gem "sys-filesystem"
+gem "sys-host"
+#gem "sys-proctable"
+gem "sys-uname"
+#gem "sys-uptime"
+#gem "SystemTimer"
+gem "systemu"
+
+
+###############################################
+## Misc. Utilities
+
+gem "columnize"
+gem "text-table"
+gem "uuid"
+gem "uuidtools"
+gem "chronic"
+gem "facets"
+
+###############################################
+## Developer Utilities (Command-line and IRB)
+
+#gem "rvm"
+gem "dnote"
+gem "vclog"
+gem "guessmethod"
+gem "hirb"
+gem "looksee"
+gem "sketches"
+gem "ZenTest"
+gem "shoulda"
+gem "rspec"
+gem "rspec-rails"
+gem "awesome_print"
+gem "unroller"
+
+
+###############################################
+## Quality Assurance Tools
+
+gem "rails_best_practices"
+gem "metric_fu"
+gem "roodi"
+
+
+###############################################
+## Deployment and Configuration Tools
+
+gem "vlad"
+gem "configuration"
+gem "configatron"
+gem "iniparse"
+
+###############################################
+## Nice to Haves -- May not be currently used in
+## production but maybe being tested in development
+
+=begin
+  #gem "bit-struct"
+  #gem "builder"
+  #gem "clogger"
+  #gem "comp_tree"
+  #gem "diff-lcs"
+  #gem "factory_girl"
+  #gem "fast_xs"
+  #gem "git"
+  #gem "hpricot"
+  #gem "jeweler"
+  #gem "linecache"
+  #gem "mocha"
+  #gem "needle"
+  #gem "open4"
+  #gem "orderedhash"
+  #gem "polyglot"
+  #gem "rdoc", "2.4.3"
+  #gem "ruby-debug"
+  #gem "ruby-debug-base"
+  #gem "starling"
+  #gem "state_machine"
+  #gem "tagz"
+  #gem 'tap'
+  #gem 'gen-tap'
+  #gem "treetop"
+  #gem "yamler"
+  #gem "zomg"
+=end
+

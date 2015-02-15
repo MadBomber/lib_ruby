@@ -1,0 +1,15 @@
+<%= f.error_messages %>
+
+<% f.inputs do %>
+	<%= f.input :name, :hint => "Name the interceptor" %>
+	<%= f.input :desc %>
+	<%= f.input :pk_air, :hint => "Probability of kill against air breathing threats" %>
+	<%= f.input :pk_space, :hint => "Probability of kill against tactical ballistic missiles" %>
+	<%= f.input :velocity, :hint => "Velocity of interceptor (in meters/second)" %>
+	<%= f.input :max_range_meters, :hint => "Maximum range (in meters) that the interceptor can be effective" %>
+	<%= f.input :cost, :hint => "Financial value of the interceptor" %>
+	<%= f.input :eng_zone_scale_air, :hint => "Expands the engagement zone for air breathing threats" %>
+	<%= f.input :eng_zone_scale_space, :hint => "Expands the engagement zone for tactical ballistic missiles" %>
+<% end %>
+
+<%= f.buttons %>

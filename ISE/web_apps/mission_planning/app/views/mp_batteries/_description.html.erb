@@ -1,0 +1,9 @@
+<% content_for :page_description do %>
+This sections provides the opportunity for you to indicate the name of the Battery (composition of 
+launchers)and also the list the name and type of launchers used in this particular Battery.
+<br />
+<br />
+<a href="/documents/guide#Batteries" target= "_blank">Go to User Guide</a>
+<br />
+<%=link_to_remote("Batteries User Guide", :url=>{:controller => 'documents', :action=>'guide', :section_name=>'batteries'}, :update => "instructions") %>
+<% end %>

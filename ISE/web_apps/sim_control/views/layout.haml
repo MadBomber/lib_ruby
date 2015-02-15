@@ -1,0 +1,56 @@
+!!!
+%html{ :lang => "en" }
+  %head
+    %meta{ :content => "text/html; charset=iso-8859-1", "http-equiv" => "content-type" }
+    = auto_refresh
+    %title
+      #{@heading} -- #{@banner}
+    %link{:rel=>"stylesheet", :href=>"/stylesheets/layout.css", :media=>"screen", :type=>"text/css"}
+  %body
+    #banner
+      %h1
+        #{@banner}
+    #banner2
+      %p
+        Sim. Time: #{SharedMemCache.get 'sim_time'}
+    #container
+      #container2
+        #navigation
+          %ul
+            %li
+              %a{ :href => "/", :title => "System Overview" } Dashboard
+            %li
+              %a{ :href => "/simcontrol", :title => "Control the Simulation" } Sim. Control
+            = render_navigation
+        #more
+          %h3
+            Status
+          %p.right
+            #{$sim_status}
+          %h3
+            Contacts
+          %p
+            %a{ :href => "mailto:charley.brown@lmco.com", :title => "Program Manager, AAD / Lower Tier" }
+              Charles C. Brown
+          %p
+            %a{ :href => "mailto:paul.h.ferguson@lmco.com", :title => "Project Manager, IRAD 1650" }
+              Paul H. Ferguson
+          %p
+            %a{ :href => "mailto:evan.dietz@lmco.com", :title => "Manager, Virual Reality Systeim Integration Lab (VRSIL)"}
+              Evan Dietz
+          %p
+            %a{ :href => "mailto:dewayne.vanhoozer@lmco.com", :title => "VRSIL Flunky" }
+              Dewayne VanHoozer
+        #content
+          %h2
+            #{@heading}
+          = yield
+        #cleardiv
+    #footer
+      %ul
+        %li
+          %a{ :href => "http://138.209.52.146" }
+            Integrated Simulation Environment (ISE)
+        %li
+          %a{ :href => "http://www.lockheedmartin.com/mfc/" }
+            Copyright &copy; 2009 Lockheed Martin / Missiles and Fire Control

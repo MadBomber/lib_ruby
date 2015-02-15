@@ -1,0 +1,14 @@
+<% unless mp_battery_configurations.nil? %>
+    <% num = 1 %>
+    <% mp_battery_configurations.each do |mp_battery_configuration| %>
+    
+        <p> <strong> Launcher Config <%= num %> </strong> </p>
+	<ul>
+	    <%= render :partial => 'shared/show_model',
+		       :locals => { :model_class => MpBatteryConfiguration,
+				    :model_entry => mp_battery_configuration,
+				    :columns => ['mp_launcher_id', 'mp_launcher_qty'] } %>
+	    <% num += 1 %>
+	</ul>
+    <% end %>
+<% end %>

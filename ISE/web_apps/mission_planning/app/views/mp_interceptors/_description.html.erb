@@ -1,0 +1,14 @@
+<% content_for :page_description do %>
+<em>
+Note that the PAC-3 and THAAD values entered in this screen are bypassed by the simulation, 
+which implements higher-fidelity Pk data versus engagement zone coverage for those weapon 
+systems. The Pk values entered in this screen for any of the weapon systems are ignored 
+whenever higher-fidelity Pk data for the engagement zone is present in the simulation.
+</em>
+<br />
+<br />
+<a href="/documents/guide#Interceptors" target= "_blank">Go to User Guide, Interceptors</a> 
+<br />
+<%=link_to_remote("Interceptors User Guide", :url=>{:controller => 'documents', :action=>'guide', :section_name=>'interceptors'}, :update => "instructions")%>
+
+<% end %>

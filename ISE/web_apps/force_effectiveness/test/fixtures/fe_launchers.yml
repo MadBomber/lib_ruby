@@ -1,0 +1,15 @@
+test_gemt_launcher: # id: 639383336
+  fe_run: test_run
+  label: test_gemt_launcher
+  category: gemt
+
+test_pac3_launcher: # id: 858127132
+  fe_run: test_run
+  label: test_pac3_launcher
+  category: pac3
+
+test_thaad_launcher: # id: 196134680
+  fe_run: test_run
+  label: test_thaad_launcher
+  category: thaad
+  

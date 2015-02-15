@@ -1,0 +1,9 @@
+<% title "Show Threat: " + @mp_threat.name %>
+
+<% render :partial => 'description' %>
+
+<%= render :partial => 'shared/show_model',
+           :locals => { :model_class => MpThreat, :model_entry => @mp_threat } %>
+
+<%= render :partial => 'shared/show_links',
+           :locals => { :model_class => MpThreat, :model_entry => @mp_threat } %>

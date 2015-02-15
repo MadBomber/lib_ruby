@@ -1,0 +1,14 @@
+<h1>Editing mp_tewa_value</h1>
+
+	<p>from mp_tewa_values/edit.html.erb</p>
+
+<% form_for(@mp_tewa_value) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.submit 'Update' %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @mp_tewa_value %> |
+<%= link_to 'Back', mp_tewa_values_path %>

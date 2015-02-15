@@ -1,0 +1,16 @@
+<% title "Tewa Weapon Bidding Factor" %>
+
+<p>
+  <strong>Name:</strong>
+  <%=h @tewa_weapon_bidding_factor.name %>
+</p>
+<p>
+  <strong>desc:</strong>
+  <%=h @tewa_weapon_bidding_factor.desc %>
+</p>
+
+<p>
+  <%= link_to "Edit", edit_tewa_weapon_bidding_factor_path(@tewa_weapon_bidding_factor) %> |
+  <%= link_to "Destroy", @tewa_weapon_bidding_factor, :confirm => 'Are you sure?', :method => :delete %> |
+  <%= link_to "View All", tewa_weapon_bidding_factors_path %>
+</p>

@@ -1,0 +1,7 @@
+<% edit_path = class_path_str(model_entry, 'edit') %>
+
+<td>
+<%= link_to 'Show', model_entry %>
+<%= link_to 'Edit', eval(edit_path + "(model_entry)") %>
+<%= link_to 'Destroy', model_entry, :confirm => 'Are you sure?', :method => :delete %>
+</td>

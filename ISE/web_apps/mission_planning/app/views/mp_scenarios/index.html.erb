@@ -1,0 +1,7 @@
+<% title "Scenarios" %>
+
+<% render :partial => 'description' %>
+
+<%= render :partial => 'shared/model_table',
+           :locals => { :model_class => MpScenario, :model_entries => @mp_scenarios, :columns => @columns } %>
+

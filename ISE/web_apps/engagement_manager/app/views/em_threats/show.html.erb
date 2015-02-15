@@ -1,0 +1,19 @@
+<!--
+  Inputs:
+	@em_threat	- Threat object
+-->
+
+<% threat_label = EmThreatsController.get_current_threat_label%>
+
+<% if threat_label.nil? %>
+  <%= render :partial => 'blank_threat' %>
+<% else %>
+	
+	<%= render :partial => 'threat_details' %><br />
+	<%= render :partial => 'interceptors' %>
+	
+	<hr />
+		
+	<%= render :partial => 'em_time_bars/index' %>
+	
+<% end %>

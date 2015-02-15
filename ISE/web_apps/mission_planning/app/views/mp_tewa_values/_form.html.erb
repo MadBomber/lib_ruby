@@ -1,0 +1,29 @@
+<table id='existing_weapon_factor_weights' class='existing_entries'>
+	<% if @tewa_configuration_weapon_factor_weights != nil %>
+		<%= render :partial => 'show' %>
+	<% end %>
+</table>
+
+<% semantic_remote_form_for @tewa_configuration_weapon_factor_weight, :update => 'existing_weapon_factor_weights', :complete => 'Modalbox.resizeToContent()' do |f| %>
+	<% f.inputs do %>
+  
+	  	<table class='existing_entries'>
+	  		<tr>
+	    		
+	    			<% if @disable_tewa_configuration_id %>
+						<%= f.input :tewa_configuration_id, :as => :hidden, :include_blank => false, :label => false %>
+					<% else %>
+						<td><%= f.input :tewa_configuration_id, :as => :select, :include_blank => false, :label => false %></td>
+					<% end %>
+				
+				<td><%= f.input :tewa_weapon_bidding_factor_id, :as => :select, :include_blank => false, :label => false %></td>
+				<td><%= f.input :relative_value, :label => false %></td>
+				
+				<% f.buttons do %>
+					<td> <%= f.commit_button "Create" %></td>
+				<% end %>
+			</tr>
+		</table>
+	
+	<% end %>
+<% end %>

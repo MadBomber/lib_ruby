@@ -1,0 +1,39 @@
+<% table_data = get_summary_table_data %>
+<% row_range = 1..(table_data[0].size - 1) %>
+
+<table class='standard summary'>
+	<th colspan='8'>Scenario Summary</th>
+	
+	<!-- Column Headings -->
+	<tr>
+		<% table_data.each do |column| %>
+			<th colspan='2'><%= column[0] %></th>
+		<% end %>
+	</tr>
+	
+	<% row_range.each do |row_index| %>
+		<tr class='<%= cycle('odd_line','even_line') %>'>
+		<% table_data.each do |column| %>
+			<% if column[row_index].class == Array %>
+				<!-- Regular Data -->
+				<td class='category'><%= column[row_index][0] %></td>
+				<td class='value'><%=h column[row_index][1] %></td>
+			<% else %>
+				<!-- Blank Cells -->
+				<td></td><td></td>
+			<% end %>
+		<% end %>
+		</tr>
+	<% end %>
+</table>
+
+<!-- Force Effectiveness	 -->
+<div class='fe_score_title'>Force Effectiveness Score</div>
+<table class='fe_score'>
+	<tr>
+		<td class='green_bar' style='width: <%= @fe_score %>%'>
+			<%=h sprintf("%.2f%", @fe_score) %>
+		</td>
+		<td></td>
+	</tr>
+</table>

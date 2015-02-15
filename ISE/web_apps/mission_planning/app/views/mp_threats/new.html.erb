@@ -1,0 +1,9 @@
+<% title "New Threat" %>
+
+<%= render :partial => 'form' %>
+
+<% render :partial => 'description' %>
+
+<% content_for :page_links do%>
+  <%= link_to "Back to List", mp_threats_path %>
+<% end %>

@@ -1,0 +1,124 @@
+pac3_interceptor:
+    name: pac3
+    desc: Patriot Advanced Capability - 3 (PAC-3) interceptor.
+    pk_air: 95
+    pk_space: 90
+    velocity: 2000
+    cost: 30
+    eng_zone_scale_air: 400
+    eng_zone_scale_space: 200
+    max_range_meters: 50000
+
+gemt_interceptor:
+    name: gemt
+    desc: Guided Enhanced Missile - Tactical (GEM-T) interceptor.
+    pk_air: 85
+    pk_space: 60
+    velocity: 2000
+    cost: 22
+    eng_zone_scale_air: 400
+    eng_zone_scale_space: 200
+    max_range_meters: 50000
+
+thaad_interceptor:
+    name: thaad
+    desc: Terminal High Altitude Area Defense (THAAD) interceptor.
+    pk_air: 0
+    pk_space: 95
+    velocity: 2800
+    cost: 40
+    eng_zone_scale_air: 0
+    eng_zone_scale_space: 1200
+    max_range_meters: 50000
+
+
+sm_interceptor:
+    name: sm
+    desc: Sea-based Missile (SM) interceptor.
+    pk_air: 85
+    pk_space: 60
+    velocity: 2000
+    cost: 22
+    eng_zone_scale_air: 400
+    eng_zone_scale_space: 200
+    max_range_meters: 50000
+
+sm1_interceptor:
+    name: sm1
+    desc: Sea-based Missile - 1 (SM1) interceptor.
+    pk_air: 85
+    pk_space: 60
+    velocity: 2000
+    cost: 22
+    eng_zone_scale_air: 400
+    eng_zone_scale_space: 200
+    max_range_meters: 50000
+
+
+sm2_interceptor:
+    name: sm2
+    desc: Sea-based Missile - 2 (SM2) interceptor.
+    pk_air: 85
+    pk_space: 60
+    velocity: 2000
+    cost: 22
+    eng_zone_scale_air: 400
+    eng_zone_scale_space: 200
+    max_range_meters: 50000
+
+sm3_interceptor:
+    name: sm3
+    desc: Sea-based Missile - 3 (SM3) interceptor.
+    pk_air: 0
+    pk_space: 95
+    velocity: 2800
+    cost: 40
+    eng_zone_scale_air: 0
+    eng_zone_scale_space: 1200
+    max_range_meters: 50000
+
+shorad_interceptor:
+    name: shorad
+    desc: Short-range Air Defense (SHORAD) interceptor.
+    pk_air: 60
+    pk_space: 0
+    velocity: 2800
+    cost: 5
+    eng_zone_scale_air: 100
+    eng_zone_scale_space: 0
+    max_range_meters: 50000
+
+
+shorad1_interceptor:
+    name: shorad1
+    desc: Short-range Air Defense (SHORAD) - 1 interceptor.
+    pk_air: 60
+    pk_space: 0
+    velocity: 2800
+    cost: 5
+    eng_zone_scale_air: 100
+    eng_zone_scale_space: 0
+    max_range_meters: 50000
+
+shorad2_interceptor:
+    name: shorad2
+    desc: Short-range Air Defense (SHORAD) - 2 interceptor.
+    pk_air: 60
+    pk_space: 0
+    velocity: 2800
+    cost: 5
+    eng_zone_scale_air: 100
+    eng_zone_scale_space: 0
+    max_range_meters: 50000
+
+shorad3_interceptor:
+    name: shorad3
+    desc: Short-range Air Defense (SHORAD) - 3 interceptor.
+    pk_air: 60
+    pk_space: 0
+    velocity: 2800
+    cost: 5
+    eng_zone_scale_air: 100
+    eng_zone_scale_space: 0
+    max_range_meters: 50000
+

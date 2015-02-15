@@ -1,0 +1,64 @@
+################################################################################
+#                                  MISSLES                                     #
+################################################################################
+cruise_missile:
+    name: cm
+    desc: Cruise Missile
+    track_category: air
+    effects_radius: 1.0
+
+hyper_velocity:
+    name: hypervelocity
+    desc: Hyper-velocity Cruise Missile
+    track_category: air
+    effects_radius: 1.0
+
+short_range_ballistic_missile:
+    name: srbm
+    desc: Short Range Ballistic Missile
+    track_category: space
+    effects_radius: 2.5
+
+medium_range_ballistic_missile:
+    name: mrbm
+    desc: Medium Range Ballistic Missile
+    track_category: space
+    effects_radius: 3.0
+
+long_range_ballistic_missile:
+    name: lrbm
+    desc: Long Range Ballistic Missile
+    track_category: space
+    effects_radius: 3.5
+
+intercontinental_ballistic_missile:
+    name: icbm
+    desc: Intercontinental Ballistic Missile
+    track_category: space
+    effects_radius: 4.0
+
+################################################################################
+#                                  AIRCRAFT                                    #
+################################################################################
+fixed_wing_aircraft:
+    name: fwac
+    desc: Fixed Wing Aircraft
+    track_category: air
+    effects_radius: 2.0
+
+unmanned_arial_vehicle:
+    name: uav
+    desc: Unmanned Aerial Vehicle
+    track_category: air
+    effects_radius: 1.0
+
+
+################################################################################
+#                               Naval Thing                                    #
+################################################################################
+cargo_ship:
+    name: cargoship
+    desc: Cargo Ship
+    track_category: air                 # only air and space have been imlemented
+    effects_radius: 0.0
+

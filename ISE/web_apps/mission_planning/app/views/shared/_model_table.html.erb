@@ -1,0 +1,22 @@
+<% ## incoming parameters
+%>
+<% # model_class, model_entries, columns
+%>
+
+<% simple_name = simple_name(model_class) %>
+<% columns = get_table_columns(model_class) if columns.nil? %>
+
+<table id=<%= "existing_#{simple_name}" %> class='existing_entries'>
+  <%= get_table_header(columns) %>
+
+  <% unless model_entries.nil? %>
+    <% model_entries.each do |model_entry| %>
+      <tr class="<%= cycle('list-line-odd', 'list-line-even') %>">
+        <%= get_table_row_contents(model_entry, columns) %>
+        <%= render :partial => 'shared/table_links', :locals => { :model_entry => model_entry } %>
+      </tr>
+    <% end %>
+  <% end %>
+</table>
+
+<%= render :partial => 'shared/new_entry_link', :locals => { :model_class => model_class }%>

@@ -1,0 +1,2 @@
+module FeInterceptorsHelper
+end

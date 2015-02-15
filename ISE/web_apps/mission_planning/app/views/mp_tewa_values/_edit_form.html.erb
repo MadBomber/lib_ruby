@@ -1,0 +1,17 @@
+<div class="form_fields">
+
+	<div style='font-size:x-large;'> Edit <%= category_name.to_s.pluralize.titleize %> <hr/><br/></div>
+	
+	<% f.fields_for :mp_tewa_values do |builder| %>
+		<% factor_label = builder.object.mp_tewa_factor.name %>
+		<% factor_desc  = builder.object.mp_tewa_factor.desc %>
+		
+		<% if factors.keys.include?(factor_label) %>
+			<% builder.object = factors[factor_label] %>
+			
+			<% builder.inputs do %>
+				<%= builder.input :value, :label => factor_label.to_s.titleize, :hint => factor_desc %>
+			<% end %>
+	    <% end %>
+	<% end %>
+</div>

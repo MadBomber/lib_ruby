@@ -1,0 +1,2 @@
+module MpBatteriesHelper
+end

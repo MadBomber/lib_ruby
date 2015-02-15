@@ -1,0 +1,6 @@
+default_tewa_config:
+    name: default_tewa_config
+    desc: The default tewa configuration.
+    doctrine: 1
+    selected: 1
+    

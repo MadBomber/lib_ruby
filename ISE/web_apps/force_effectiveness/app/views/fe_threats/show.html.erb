@@ -1,0 +1,33 @@
+<p>
+  <b>Run:</b>
+  <%=h @fe_threat.fe_run_id %>
+</p>
+
+<p>
+  <b>Label:</b>
+  <%=h @fe_threat.label %>
+</p>
+
+<p>
+  <b>Category:</b>
+  <%=h @fe_threat.category %>
+</p>
+
+<p>
+  <b>Target area:</b>
+  <%=h @fe_threat.target_area_id %>
+</p>
+
+<p>
+  <b>Source area:</b>
+  <%=h @fe_threat.source_area_id %>
+</p>
+
+<p>
+  <b>Status:</b>
+  <%=h @fe_threat.status %>
+</p>
+
+
+<%= link_to 'Edit', edit_fe_threat_path(@fe_threat) %> |
+<%= link_to 'Back', fe_threats_path %>

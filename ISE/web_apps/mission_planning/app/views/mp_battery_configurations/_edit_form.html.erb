@@ -1,0 +1,20 @@
+<% f.fields_for :mp_battery_configurations do |builder| %>
+  <% builder.object.mp_battery = mp_battery %>
+  <div class="form_fields">    
+	Edit Launcher Type <br />
+	<!--
+	  NOTE: The attribute must be "_delete" not "_destroy"!
+			It appears that _destroy was used previously and that it switched
+			breifly to _delete in Rails 2.3.2.  In 2.3.4 it is returned back to
+			_destroy as depricated.  The current understanding is that _delete
+			will be used for future implementations.
+	-->
+	<%= builder.hidden_field :_delete %>
+	<%= button_to_remove_form_fields "Remove Launcher", builder %>
+	
+	<% builder.inputs do %>
+	  <%= builder.input :mp_launcher, :as => :radio, :label => 'Launcher Type' %>
+	  <%= builder.input :mp_launcher_qty, :label => 'Launcher Type Quantitity' %>
+	<% end %>
+  </div>
+<% end %>

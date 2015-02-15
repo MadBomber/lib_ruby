@@ -1,0 +1,23 @@
+test_engagement_one: # id: 504777162
+  fe_run: test_run
+  fe_launcher: test_pac3_launcher
+  fe_threat: flying_test_threat
+  status: engaging
+
+test_engagement_two: # id: 547984398
+  fe_run: test_run
+  fe_launcher: test_thaad_launcher
+  fe_threat: intercepted_test_threat
+  status: succeeded
+  
+test_engagement_three: # id: 23085535
+  fe_run: test_run
+  fe_launcher: test_thaad_launcher
+  fe_threat: impacted_test_threat
+  status: canceled
+  
+test_engagement_four: # id: 637139984
+  fe_run: test_run
+  fe_launcher: test_gemt_launcher
+  fe_threat: impacted_test_threat
+  status: failed

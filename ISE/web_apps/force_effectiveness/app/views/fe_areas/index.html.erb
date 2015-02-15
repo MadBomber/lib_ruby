@@ -1,0 +1,24 @@
+<h1>Listing fe_areas</h1>
+
+<table>
+  <tr>
+    <th>Run</th>
+    <th>Label</th>
+    <th>Category</th>
+  </tr>
+
+<% @fe_areas.each do |fe_area| %>
+  <tr>
+    <td><%=h fe_area.fe_run_id %></td>
+    <td><%=h fe_area.label %></td>
+    <td><%=h fe_area.category %></td>
+    <td><%= link_to 'Show', fe_area %></td>
+    <td><%= link_to 'Edit', edit_fe_area_path(fe_area) %></td>
+    <td><%= link_to 'Destroy', fe_area, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New fe_area', new_fe_area_path %>

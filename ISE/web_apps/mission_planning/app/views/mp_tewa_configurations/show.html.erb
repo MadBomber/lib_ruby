@@ -1,0 +1,16 @@
+<% title "Show TEWA Configuration: " + @mp_tewa_configuration.name %>
+
+<% render :partial => 'description' %>
+
+<%= render :partial => 'shared/show_model',
+           :locals => { :model_class => MpTewaConfiguration, :model_entry => @mp_tewa_configuration } %>
+
+<% @mp_tewa_factors.each_pair do |category_name, factors| %>
+	<%= render :partial => 'mp_tewa_values/show',
+	   :locals => {:category_name => category_name,
+				   :factors => factors } %>
+<% end %>
+
+
+<%= render :partial => 'shared/show_links',
+           :locals => { :model_class => MpTewaConfiguration, :model_entry => @mp_tewa_configuration } %>

@@ -1,0 +1,27 @@
+<!-- TODO: 69th wants launchers sorted into two groups: engaging and not engaging with a HR between them -->
+<% threat = EmThreatsController.get_current_threat %>
+<% launchers          = threat.launchers%>
+<% engaging_launchers = threat.get_engaging_launchers %>
+<% active_launchers   = threat.get_active_launchers %>
+
+<% highest_bidder_label = get_label_for_highest_launcher_bid(launchers) %>
+
+<% unless engaging_launchers.empty? %>
+	<div id='engaging_launchers_title'>Engaging Launchers:</div>
+  <% engaging_launchers.each do |launcher| %>
+	  <% highlight = (launcher.label == highest_bidder_label) %>
+	  <%= render :partial => 'em_time_bars/show', :locals => { :launcher => launcher, :highlight => highlight } %>
+  <% end %>
+
+  <hr id='launcher_bid_seperator' />
+<% end %>
+
+<% unless active_launchers.empty? %>
+	<div id='available_launchers_title'>Available Launchers:</div>
+  <% active_launchers.each do |launcher| %>
+	  <% highlight = (launcher.label == highest_bidder_label) %>
+	  <%= render :partial => 'em_time_bars/show', :locals => { :launcher => launcher, :highlight => highlight } %>
+  <% end %>
+<% end %>
+
+

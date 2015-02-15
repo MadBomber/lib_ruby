@@ -1,0 +1,89 @@
+################################################################################
+#                             THREAT EVALUATION                                #
+################################################################################
+threat_type_factor:
+    name: threat_type
+    desc: "(Range: 0-100) The weight given to all threat types compared to other threat evaluation factors."
+    category: threat_evaluation
+
+launch_area_factor:
+    name: launch_area
+    desc: "(Range: 0-100) The weight given to the launch areas from which the threat was judged to have originated as compared to other threat evaluation factors."
+    category: threat_evaluation
+
+defended_area_factor:
+    name: defended_area
+    desc: "(Range: 0-100) The weight given to all defended areas within range of the threat's effect radius compared to other threat evaluation factors."
+    category: threat_evaluation
+
+time_until_impact_factor:
+    name: time_until_impact
+    desc: "(Range: 0-100) The weight given to the time until the threat reaches its point of impact compared to other threat evaluation factors."
+    category: threat_evaluation
+
+################################################################################
+#                             WEAPON ASSIGNMENT                                #
+################################################################################
+interceptor_cost_factor:
+    name: interceptor_cost
+    desc: "(Range: 0-100) The weight given to the economic cost of the interceptor compared to other weapon assignment factors."
+    category: weapon_assignment
+
+interceptor_pk_factor:
+    name: interceptor_pk
+    desc: "(Range: 0-100) The weight given to the probability that the interceptor will kill the threat compared to other weapon assignment factors."
+    category: weapon_assignment
+
+time_until_ftl_factor:
+    name: time_until_ftl
+    desc: "(Range: 0-100) The weight given to the time until the threat is within the effective range of the interceptor compared to other weapon assignment factors."
+    category: weapon_assignment
+  
+rounds_available_factor:
+    name: rounds_available
+    desc: "(Range: 0-100) The weight given to the rounds available to a particular launcher compared to other weapon assignment factors."
+    category: weapon_assignment
+
+
+################################################################################
+#                                  THREATS                                     #
+################################################################################
+cruise_missile_factor:
+    name: cm
+    desc: "(Range: 0-100) The weight given to cruise missiles compared to other threat types."
+    category: threat_type
+
+hyper_velocity_cruise_missile_factor:
+    name: hv
+    desc: "(Range: 0-100) The weight given to hyper-velocity cruise missiles compared to other threat types."
+    category: threat_type
+
+short_range_ballistic_missile_factor:
+    name: srbm
+    desc: "(Range: 0-100) The weight given to short range ballistic missiles compared to other threat types."
+    category: threat_type
+
+medium_range_ballistic_missile_factor:
+    name: mrbm
+    desc: "(Range: 0-100) The weight given to medium range ballistic missiles compared to other threat types."
+    category: threat_type
+
+long_range_ballistic_missile_factor:
+    name: lrbm
+    desc: "(Range: 0-100) The weight given to long range ballistic missiles compared to other threat types."
+    category: threat_type
+
+intercontinental_ballistic_missile_factor:
+    name: icbm
+    desc: "(Range: 0-100) The weight given to intercontinental ballistic missiles compared to other threat types."
+    category: threat_type
+
+fixed_wing_aircraft_factor:
+    name: fwac
+    desc: "(Range: 0-100) The weight given to fixed wing aircraft compared to other threat types."
+    category: threat_type
+
+unmanned_arial_vehicle_factor:
+    name: uav
+    desc: "(Range: 0-100) The weight given to unmanned arial vehicles compared to other threat types."
+    category: threat_type

@@ -1,0 +1,28 @@
+<h1 class='run_list_title'>Simulation Runs</h1>
+
+<table class='standard'>
+  <tr>
+    <th rowspan = '2'>ID</th>
+    <th colspan = '3'>Scenario Names</th>
+    <th rowspan = '2'>Run Date</th>
+	  <th rowspan = '2', colspan='2'>Actions</th>
+  </tr>
+  
+  <tr>
+    <th>IDP Name</th>
+    <th>SG Name</th>
+    <th>TEWA Config</th>
+  </tr>
+
+<% @fe_runs.each do |fe_run| %>
+  <tr class='<%= cycle('odd_line', 'even_line') %>'>
+    <td><%=h fe_run.id %></td>
+    <td><%=h fe_run.mps_idp_name.titleize %></td>
+    <td><%=h fe_run.mps_sg_name.titleize %></td>
+    <td><%=h fe_run.mptc_name.titleize %></td>
+    <td><%=h fe_run.created_at %></td>
+    <td><%= link_to 'Show', fe_run %></td>
+    <td><%= link_to 'Destroy', fe_run, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>

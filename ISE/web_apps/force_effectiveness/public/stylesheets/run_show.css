@@ -1,0 +1,69 @@
+div.show_title {
+	font-size: xx-large;
+	text-align: center;
+}
+
+
+
+div.back_button {
+	float: right;
+}
+
+
+
+
+table.summary td.category {
+	text-align: right;
+}
+
+table.summary td.value {
+	text-align: left;
+}
+
+table.summary tr.fe_score_title {
+	background-color: transparent;
+}
+
+table.summary td.fe_score {
+	margin-left: auto;
+	margin-right: auto;
+	/*background-color: rgb(77, 167, 77);*/
+	background-color: green;
+	color: white;
+	font-weight: bold;
+}
+
+div.fe_score_title {
+	text-align: center;
+}
+
+table.fe_score {
+	margin-left: auto;
+	margin-right: auto;
+	text-align:center;
+	width: 70%;
+	border: solid 1px;
+	border-color: black;
+}
+
+table.fe_score td.green_bar {
+	/*border: solid 1px;
+	border-color: black;*/
+	background-color: green;
+	color: white;
+	font-weight: bold;
+}
+
+table.fe_score td.white_bar {
+	/*border: solid 1px;
+	border-color: black;*/
+	background_color: white;
+}
+
+table.stats_charts td {
+	width: 50%;
+} 
+
+table.query td {
+	width: 25%;
+}

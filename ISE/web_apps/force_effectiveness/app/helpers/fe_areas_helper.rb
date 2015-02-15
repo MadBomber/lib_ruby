@@ -1,0 +1,2 @@
+module FeAreasHelper
+end

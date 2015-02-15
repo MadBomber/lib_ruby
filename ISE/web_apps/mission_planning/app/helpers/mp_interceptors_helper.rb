@@ -1,0 +1,3 @@
+module MpInterceptorsHelper
+  
+end

@@ -1,0 +1,14 @@
+# using default_scenario and default_tewa_config id's from Mission Planning
+
+test_run: # id: 428069267
+  mp_scenario_id: 654548843
+  mp_tewa_configuration_id: 694016771
+  first_frame: 1
+  last_frame: 900
+  
+other_test_run: # id: 216808264
+  mp_scenario_id: 123456789
+  mp_tewa_configuration_id: 987654321
+  first_frame: 1
+  last_frame: 400
+  

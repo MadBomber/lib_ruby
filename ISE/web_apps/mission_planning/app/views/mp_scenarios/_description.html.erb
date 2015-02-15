@@ -1,0 +1,21 @@
+<% content_for :page_description do %>
+This section provides the oppurtunity for you to establish the TEWA Configuration. The View Threat Type Weights section 
+allows you to rank the type of threats, the View Threat Priority Factor section allows you to rank the various factors of a  
+particular threat, the View Weapon Bidding Factor Weights section allows you to rank the various factors regarding seclecting 
+a particular response. In all of these sections the rankings are from 0-100 and the sum relative values must equal 100.
+<br />
+<br />
+<a href="/documents/guide#TEWA Configuration" target= "_blank">Go to User Guide, TEWA Configuration</a>
+<br />
+<% if @popup == true
+div_name = "instructions_popup"
+else
+div_name = "instructions"
+end %>
+<%= if @popup == true
+toggle_link_for_div('tewa_configuration_user_guide_div', 'toggle_instructions_popup_div')+
+link_to_remote("TEWA Configuration User Guide", :url=>{:controller => 'documents', :action=>'guide', :section_name=>'tewa_configurations'},
+:update => div_name,
+:complete => '$("toggle_instructions_popup_div").show(), Modalbox.resizeToContent()')
+end %>
+<% end %>

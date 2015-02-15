@@ -1,0 +1,49 @@
+<% if @summary_stats.nil? %>
+  <%= @guid + "|" + @RuntimeEntry.inspect %>
+<% else %>
+
+<table width="100%" style="padding: 20px">
+	<tr>
+		<td>Scenario: <%= @Scenario.name %></td>
+                <td>Num Engagements: <%= @summary_stats['Total # Engagements'] %></td>
+	</tr>
+	<tr>
+		<td>GUID: <%= @guid %></td>
+                <td>Success Rate: <%= @summary_stats['Engage % Success'] %> %</td>
+	</tr>
+	<tr>
+		<td>Time Elapsed: <%= @summary_stats['Time Elapsed'] %> min</td>
+                <td>Rounds Fired: <%= @summary_stats['Total Rounds Fired'] %></td>
+	</tr>
+	<tr>
+		<td>Num Hostiles: <%= @summary_stats['Total # Hostiles'] %></td>
+		<td>Rounds Term: <%= @summary_stats['Total Rounds Term'] %></td>
+	</tr>
+	<tr>
+		<td>Num Space: <%= @summary_stats['Total # Space'] %></td>
+		<td>Round Hit Rate: <%= @summary_stats['Total % Hit'] %> %</td>
+	</tr>
+	<tr>
+		<td>Num Air: <%= @summary_stats['Total # Air'] %></td>
+                <td>Round Miss Rate: <%= @summary_stats['Total % Miss'] %> %</td>
+		
+	</tr>
+	<tr>
+                <td>Num Leakers: <%= @summary_stats['Total Number Leakers'] %></td>
+                <td>Leakers: <%= @summary_stats['Total % Leakers'] %> %</td>
+        </tr>
+	<tr>
+		<td colspan="2" style="text-align: center; font-weight: bold;">
+			Force Effectiveness Score: 
+		</td>
+	</tr>
+	<tr>
+		<td colspan="2" style="text-align: center;">
+			<div style='margin-left: auto; margin-right: auto; width: 70%; background-color: rgb(77, 167, 77); color: white; font-weight: bold;'>
+				<%= @summary_stats['Force Effectiveness Score'] %>
+			</div>
+		</td>
+	</tr>
+</table>
+
+<% end %>

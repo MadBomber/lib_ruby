@@ -1,0 +1,34 @@
+engaging_test_interceptor: # id: ???
+  fe_run: test_run
+  label: flying_test_pac3_interceptor
+  category: pac3
+  fe_engagement: test_engagement_one
+  status: engaging
+  
+hit_test_interceptor: # id: 530754646
+  fe_run: test_run
+  label: hit_test_thaad_interceptor
+  category: thaad
+  fe_engagement: test_engagement_two
+  status: hit
+  
+missed_test_interceptor: # id: 368752489
+  fe_run: test_run
+  label: missed_test_gemt_interceptor
+  category: gemt
+  fe_engagement: test_engagement_four
+  status: missed
+  
+canceled_test_interceptor: # id: 1053077319
+  fe_run: test_run
+  label: canceled_test_thaad_interceptor
+  category: thaad
+  fe_engagement: test_engagement_three
+  status: canceled
+  
+terminated_test_interceptor: # id: 221020615
+  fe_run: test_run
+  label: terminated_test_thaad_interceptor
+  category: thaad
+  fe_engagement: test_engagement_two
+  status: terminated

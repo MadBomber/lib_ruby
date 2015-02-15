@@ -1,0 +1,27 @@
+<html xmlns="http://www.w3.org/1999/xhtml" dir="ltr" lang="en-US">
+<head profile="http://gmpg.org/xfn/11">
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <link rel="Shortcut Icon" type="image/ico" href="/favicon.ico" />
+  <title>Sinatra</title>
+  <link rel="stylesheet" href="/layout.css" type="text/css" media="screen" />
+</head>
+<body>
+  <div id="page">
+    <!-- BEGIN: Header -->
+    <%= partial :header %>
+    <!-- END: Header -->
+    <div id="main">
+      <div class="content">  
+        <p>
+          <%= yield %>
+        </p>
+      </div>
+    </div>
+    <!-- BEGIN: Footer -->
+    <%= partial :footer %>
+    <!-- END: Footer -->
+  </div>                 
+</body>
+</html>
+
+

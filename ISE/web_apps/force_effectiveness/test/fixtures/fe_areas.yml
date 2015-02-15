@@ -1,9 +1,0 @@
-ally_area_one: # id: 352326377
-  fe_run: test_run
-  label: ally_area_one
-  category: target
-
-enemy_area_one: # id: 874624883
-  fe_run: test_run
-  label: enemy_area_one
-  category: source

@@ -1,6 +1,0 @@
-<% new_path = class_path_sym(model_class, 'new') %>
-<% new_str  = "New #{simple_name(model_class).titleize}"%>
-
-<% content_for :page_links do %> 
-  <%= link_to new_str, new_path %>
-<% end %>

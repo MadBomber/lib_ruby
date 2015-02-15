@@ -1,9 +1,0 @@
-{
-	"series":
-		[
-		<% for threat_mix in @ThreatMix do %>
-  			{ "data": [[0,<%=h threat_mix.count%>]], "label": "<%=h threat_mix.name%>"},
-		<% end %>
-		], 
-	<%= render :partial => 'flotr_piechart_options' %>
-}

@@ -1,8 +1,0 @@
-<!-- TODO: remove unused categories -->
-<% EmQueuesController::ACTIVE_QUEUE_NAMES.each do |queue_name| %>
-  <% queue = $em_queues[queue_name] %>
-	<%= render :partial => "em_queues/show", :locals => {:queue => queue} %>
-	<br/>
-<% end %>
- SimTime: <%= $sim_time.now %> of <%= $sim_time.duration - 1 %> seconds.
- 

@@ -1,8 +1,0 @@
-// workspace definition for the RandomLib
-
-workspace(RandomLib) {
-	static {
-		cmdline += -static
-		app.mpc
-	}
-}

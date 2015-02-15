@@ -1,7 +1,0 @@
-<% edit_path = class_path_str(model_entry, 'edit') %>
-
-<% content_for :page_links do%>
-  <%= link_to "Edit", eval(edit_path + "(model_entry)") %> |
-  <%= link_to "Destroy", model_entry, :confirm => 'Are you sure?', :method => :delete %> |
-  <%= link_to "View All", root_class_path_sym(model_class) %>
-<% end %>

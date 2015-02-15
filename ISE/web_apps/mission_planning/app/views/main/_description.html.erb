@@ -1,9 +1,0 @@
-<% content_for :page_description do %>
-Use this section to preform the final check on the selected scenario and prep the simulation. Through this section the simulation can also be ran review the results.	
-<br />
-<br />
-<a href="/documents/guide#Launch" target= "_blank">Go to User Guide, Launch</a>
-<br />
-<%=link_to_remote("Launch User Guide", :url=>{:controller => 'documents', :action=>'guide', :section_name=>'launch'}, :update => "instructions") %>
-<% end %>
-

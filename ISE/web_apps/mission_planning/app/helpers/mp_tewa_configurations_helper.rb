@@ -1,2 +1,0 @@
-module MpTewaConfigurationsHelper
-end

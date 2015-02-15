@@ -1,9 +1,0 @@
-<% title "Show Scenario: " + @mp_scenario.name %>
-
-<% render :partial => 'description' %>
-
-<%= render :partial => 'shared/show_model',
-           :locals => { :model_class => MpScenario, :model_entry => @mp_scenario } %>
-
-<%= render :partial => 'shared/show_links',
-           :locals => { :model_class => MpScenario, :model_entry => @mp_scenario } %>

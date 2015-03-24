@@ -12,7 +12,7 @@ class TrieNode
   def canEnd
     @isend
   end
-  
+
   def append( string )
     if string.length == 0
       @isend = true
@@ -42,12 +42,12 @@ class TrieNode
   end
 
   def searchRecursive( string )
-    @childnodes.each{ |node|    
+    @childnodes.each{ |node|
       if string[0, 1] == node.charOfNode
-        if string.length == 1 and node.canEnd
+        if string.length == 1 && node.canEnd
           return true
         end
-        
+
         return node.search( string[1, string.size() - 1] )
       end
     }

@@ -105,7 +105,8 @@ class BagOfWords
     end
 
     def normalize_tf doc_hash
-      norm = Math.sqrt doc_hash.values.map {|v| v**2}.reduce(:+)
+      return(doc_hash) if doc_hash.empty?
+      norm = Math.sqrt(doc_hash.values.map {|v| v**2}.reduce(:+))
       doc_hash.each do |k, v|
         doc_hash[k] = v / norm
       end

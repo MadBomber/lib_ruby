@@ -3,6 +3,7 @@
 # string suitable as a variable name in the convention.
 # The support conventions are:
 #   :snake_case (default)
+#   :tall_snake_case (ex: tall-snake-case)
 #   :CamelCase
 #   :lowerCamelCase
 #  Any text between parans is removed.
@@ -35,7 +36,9 @@ def variable_name_of(a_string, convention = :snake_case)
       end
       variable_name = parts.join    
     when :snake_case 
-      variable_name = parts.join('_')   
+      variable_name = parts.join('_')
+    when :tall_snake_case
+      variable_name = parts.join('-')
     else
       raise ArgumentError, "Invalid Convention: #{convention}"
   end

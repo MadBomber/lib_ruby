@@ -9,6 +9,14 @@ class String
   alias :old_reverse :reverse
   
   ################################################################
+  ## Removes a_string from self
+
+  def -(a_string_or_regex)
+    self.gsub(a_string_or_regex,'')
+  end
+
+
+  ################################################################
   ## Presents each character of a string as a character to a block
 
   def each_char
@@ -20,6 +28,7 @@ class String
       scan(/./m)
     end
   end
+
 
   ######################################################
   ## Return the string as a string of hexidecimal digits
@@ -56,6 +65,7 @@ class String
     return s
   end
   
+
   #################################################
   ## Return the string as a string of binary digits
   def to_binary(nibble_marker=nil)
@@ -111,6 +121,7 @@ class String
 
   alias :byte_swap :swap_bytes
   
+
   #################################################################################
   def reverse(count=1)
   
@@ -128,7 +139,6 @@ class String
   end
 
 
-
   ##################################
   ## Convert CamelCase to camel_case
   def to_underscore
@@ -137,6 +147,7 @@ class String
 
   alias :to_snakecase :to_underscore
   alias :underscore   :to_underscore
+
 
   ##################################
   ## Convert camel_case to CamelCase
@@ -166,6 +177,7 @@ class String
   
   alias :constantize :to_constant
 
+
   ##################################
   ## Support for C-ish strings
   def to_cstring
@@ -176,6 +188,7 @@ class String
     x = self.index("\000")
     x > 0 ? self[0,x] : ''
   end
+
 
   ##################################
   ## Support for Pascal-ish strings

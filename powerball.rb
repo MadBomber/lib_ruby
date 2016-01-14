@@ -7,7 +7,24 @@ class Powerball
       raise 'Invalid ticket; requires 6 integers.' unless 6 == a_pick.size
       a_pick[0..4].sort.join(', ') + ' - ' + a_pick[5].to_s
     end
-  end
+
+    def odds
+      # n!/k!(n-k)! -- combination n things taken k at a time
+
+      wbm = 69 # white ball max
+      wbc = 5  # white ball count
+      rbm = 26 # red ball max
+
+      nf = (1..wbm).inject(:*)
+      kf = (1..wbc).inject(:*)
+      j = wbm - wbc
+      jf = (1..j).inject(:*)
+      jkf = kf*jf
+      odds = (nf / jkf) * rbm
+      odds_humanized = odds.to_s.reverse.gsub(/(\d{3})(?=\d)/, '\\1,').reverse
+      "1 in #{odds_humanized}"
+    end
+  end # class << self
 
 
   def initialize(winners_file=nil)

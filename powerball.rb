@@ -76,7 +76,7 @@ class Powerball
   def skip(a_line)
     @line_cnt ||= 0
     @line_cnt += 1
-    1 == line_cnt || 
+    1 == @line_cnt || 
     a_line.empty? || 
     a_line.strip.start_with?('#')
   end

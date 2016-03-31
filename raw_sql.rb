@@ -42,9 +42,15 @@ class RawSQL
     end
 
 
-    def query(sql_filename, parameters={})
+    def file(sql_filename, parameters={})
+      sql_statement = get_text_file_contents(sql_filename)
+      query(sql_statement, parameters)
+    end
+
+
+    def query(sql_statement, parameters={})
       sql_statement = do_parameter_substitution(
-            get_text_file_contents(sql_filename),
+            sql_statement,
             parameters
           )
 

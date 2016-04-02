@@ -17,11 +17,12 @@
 #
 
 class RawSQL
+  
+  class FileNotFound  < ArgumentError; end
+  class KeyError      < ArgumentError; end
 
-  class SyntaxError   < RuntimeError; end
-  class KeyError      < RuntimeError; end
   class QueryError    < RuntimeError; end
-  class FileNotFound  < RuntimeError; end
+  class SyntaxError   < RuntimeError; end
 
   include ActiveRecord::ConnectionAdapters::Quoting
 

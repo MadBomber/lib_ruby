@@ -41,7 +41,7 @@ class UtmCoordinate
   ############################################################
   def to_lla
     require 'LlaCoordinate'
-    lla = LlaCoordinate,new
+    lla = LlaCoordinate.new
   end ## def to_lla
   
   ############################################################

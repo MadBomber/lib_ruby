@@ -13,6 +13,6 @@ module Refinements
     end
 
   end # refine Fixnum do
-    
+
 end # module Refinements
 

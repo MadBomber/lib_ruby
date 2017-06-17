@@ -1,7 +1,6 @@
 # aliases_of.rb
-#
-# from the library of the MadBomber
-#
+
+# TODO: add ability to find aliases of class-level methods
 
 def aliases_of(klass, a_symbol)
 

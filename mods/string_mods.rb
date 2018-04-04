@@ -7,7 +7,7 @@
 class String
 
   alias :old_reverse :reverse
-  
+
   ################################################################
   ## Removes a_string from self
 
@@ -61,10 +61,10 @@ class String
 #      puts "-----------============<".reverse
       s = s2
     end
-    
+
     return s
   end
-  
+
 
   #################################################
   ## Return the string as a string of binary digits
@@ -89,7 +89,7 @@ class String
   def to_characters
 
     x = self.length
-    
+
     s=''
     (0..x-1).step(2) do |inx|
       cv = '0x' + self[inx,2]
@@ -97,7 +97,7 @@ class String
       c = v.chr
       s += c
     end
-    
+
     return s
 
   end ## end of def to_characters(hex_data_str)
@@ -108,23 +108,23 @@ class String
   def swap_bytes
 
     x = self.length
-    
+
     s=''
     (0..x-1).step(2) do |inx|
       s << self[inx+1]
       s << self[inx]
     end
-    
+
     return s
 
   end ## end of def swap_bytes(a_str)
 
   alias :byte_swap :swap_bytes
-  
+
 
   #################################################################################
   def reverse(count=1)
-  
+
     if 1 == count
       self.old_reverse
     else
@@ -135,17 +135,19 @@ class String
       end
       return s
     end
-  
+
   end
 
 
   ##################################
   ## Convert CamelCase to camel_case
   def to_underscore
-    self.gsub(/::/, '/').gsub(/([A-Z]+)([A-Z][a-z])/,'\1_\2').gsub(/([a-z\d])([A-Z])/,'\1_\2').tr("-", "_").downcase
-  end  
+    self.gsub(/::/, '/').gsub(/([A-Z]+)([A-Z][a-z])/,'\1_\2').gsub(/([a-z\d])([A-Z])/,'\1_\2').tr("- ", "_").downcase
+  end
 
   alias :to_snakecase :to_underscore
+  alias :snakecase    :to_underscore
+  alias :snake_case   :to_underscore
   alias :underscore   :to_underscore
 
 
@@ -174,7 +176,7 @@ class String
     end
     constant
   end
-  
+
   alias :constantize :to_constant
 
 
@@ -183,7 +185,7 @@ class String
   def to_cstring
     self + "\000"
   end
-  
+
   def from_cstring
     x = self.index("\000")
     x > 0 ? self[0,x] : ''
@@ -197,13 +199,13 @@ class String
     raise 'StringTooLong' if self.length > 255 # 2**8 - 1
     [self.length].pack('C1') + self
   end
-  
+
   def from_pstring
     x = self.unpack('C')[0]
     self[1,x]
   end
 
-  
+
   ##################################
   ## Support for Pascal-ish strings
   ## using 2 bytes prepended as length
@@ -213,13 +215,13 @@ class String
     raise 'StringTooLong' if self.length > 65_535 # 2**16 - 1
     [self.length].pack('n') + self
   end
-  
+
   def from_p2string
     x = self.unpack('n')[0]
     self[2,x]
   end
 
-  
+
   ##################################
   ## Support for Pascal-ish strings
   ## using 4 bytes prepended as length
@@ -229,7 +231,7 @@ class String
     raise 'StringTooLong' if self.length > 4_294_967_295 # 2**32 - 1
     [self.length].pack('N') + self
   end
-  
+
   def from_p4string
     x = self.unpack('N')[0]
     self[4,x]

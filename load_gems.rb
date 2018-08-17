@@ -18,7 +18,7 @@ def load_gems(an_array_of_strings)
   print "Installing gems as necessary ... " if $debug
   gemfile do
     source 'https://rubygems.org'
-    an_array_of_strings.each do |gem_name|
+    Array(an_array_of_strings).each do |gem_name|
       print gem_name + ' ' if $debug
       gem gem_name
     end

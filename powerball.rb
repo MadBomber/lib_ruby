@@ -57,7 +57,7 @@ class Powerball
 
   # The winners file is obtained from the powerball website
   # via external download.  The file is a text file.  The
-  # first line is a header: 
+  # first line is a header:
   #     Draw Date   WB1 WB2 WB3 WB4 WB5 PB  PP
   def ingest_winners_file(filename)
     return(false) if filename.nil?
@@ -76,8 +76,8 @@ class Powerball
   def skip(a_line)
     @line_cnt ||= 0
     @line_cnt += 1
-    1 == @line_cnt || 
-    a_line.empty? || 
+    1 == @line_cnt ||
+    a_line.empty? ||
     a_line.strip.start_with?('#')
   end
 
@@ -105,6 +105,7 @@ class Powerball
     end
     puts "We have a winner!  #{to_s} after #{pick_cnt} picks."
     puts "   Date of winning drawing: #{@winners[@pick]}"
+    puts
     true
   end
 

@@ -14,6 +14,11 @@ module Refinements
       self.gsub(/\D/,'')
     end
 
+    # treats the string as a binary buffer.  Returns a new
+    # string (suitable for printing) of the hexidecimal vaules of the buffer
+    def as_hex
+      self.bytes.map { |byte| sprintf('%02x', byte) }.join(' ')
+    end
   end # refine String do
 
 end # module Refinements

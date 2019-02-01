@@ -3,7 +3,7 @@
 # ASSUMPTION: running on a *nix system that has a "find" command.
 
 begin
-  __find_files__ = `which xyzzy`
+  __find_files__ = `which find`
   raise 'GotWhichNoFind' if __find_files__.empty?
 rescue Exception => e
 

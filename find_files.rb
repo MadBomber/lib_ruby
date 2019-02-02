@@ -19,16 +19,16 @@ end
 
 require 'pathname'
 
-def find_files(file_name, starting_dir=Pathname.pwd)
+def find_files(file_name, starting_dir=Pathname.pwd, recursive: true)
   if Pathname == starting_dir.class
     starting_dir = starting_dir.realpath
   else
     starting_dir = Pathname.new(starting_dir).realpath
   end
 
-  find_command = "find #{String(starting_dir)} -name '#{String(file_name)}'"
+  parameters = recursive ? '-name' : '-maxdepth 1 -name'
 
-  puts find_command
+  find_command = "find #{String(starting_dir)} #{parameters} '#{String(file_name)}'"
 
   files = `#{find_command}`.split("\n").map {|file| Pathname.new(file)}
 
@@ -39,4 +39,5 @@ __END__
 require 'awesome_print'
 
 ap find_files '*.rb'
+ap find_files '.bashrc*', ENV['HOME'], recursive: false
 

@@ -157,7 +157,8 @@ class String
     self.gsub(/\/(.?)/) { "::" + $1.upcase }.gsub(/(^|_)(.)/) { $2.upcase }
   end
 
-  alias :camelize :to_camelcase
+  alias :camelcase :to_camelcase
+  alias :camelize  :to_camelcase
 
 
   ##################################

@@ -1,5 +1,9 @@
 # lib/ruby/simple_feature_flags.rb
 #
+# See: https://blog.appsignal.com/2022/06/08/add-feature-flags-in-ruby-on-rails-with-flipper.html
+#
+# For serious work use the "gem install flipper"
+#
 
 =begin
   Usage:

@@ -1,8 +1,5 @@
 #!/usr/bin/env ruby
 
-require 'debug_me'
-include DebugMe
-
 require 'minitest/autorun'
 require_relative '../bit_array'
 

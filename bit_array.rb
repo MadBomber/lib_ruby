@@ -143,5 +143,3 @@ class BitArray
   end
 end
 
-
-__END__

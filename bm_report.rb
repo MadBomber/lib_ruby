@@ -56,3 +56,23 @@ def bm_report(results)
 
   nil
 end
+
+__END__
+
+See Also:  ~/lib/ruby/quick.rb 
+
+Example Usage: 
+
+# benchmarking 3 test cases ...
+
+def bm(how_many=1000)
+  one   = quick(how_many, 'default')  { rand }
+  two   = quick(how_many, '10')       { rand(10)}
+  three = quick(how_many, '100')      { rand(100) }
+
+  [one, two, three]
+end 
+
+bm_report bm
+
+

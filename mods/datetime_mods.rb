@@ -1,32 +1,25 @@
 #####################################################################
 ###
 ##  File:  datetime_mods.rb
-##  Desc:  Modifications to the Array class.
+##  Desc:  Modifications to the Date, DateTime and Time classes.
 #
 
-class Time
+module ModsDataTimeEtc
+  def before?(thing) (self <= thing); end
+  def after?(thing)  (self >= thing); end
+end
 
-  def before(thing)
-    return (self <= thing)
-  end ## end of def before(thing)
+class Date
+  include ModsDateTimeEtc
+  def to_unix() self.to_time.to_i; end
+end
 
-  def after(thing)
-    return (self >= thing)
-  end ## end of def after(thing)
-
-end ## end of class Time
-
-############################################################
 class DateTime
+  include ModsDateTimeEtc
+  def to_unix() self.to_time.to_i; end
+end
 
-  def before(thing)
-    return (self <= thing)
-  end ## end of def before(thing)
-
-  def after(thing)
-    return (self >= thing)
-  end ## end of def after(thing)
-
-end ## end of class DateTime
-
-
+class Time
+  include ModsDateTimeEtc
+  def to_unix() self.to_i; end
+end

@@ -16,52 +16,7 @@
 # product reaches productions, you should ditch the free api keys are purchase
 # a production key that has the appropriate characteristics your product needs.
 
-# Simple key manager that rotates keys based upon a consecutive usage counter.
 module ApiKeyManager
-
-  # I'm not sure this class is really that important.  All the
-  # limited APIs that I know about a RATE limited.
-  #
-  class Counter
-
-  	# api_keys (Array of String) or CSV String
-  	# 	of rate limited API Keys.
-  	#
-  	# rate_count (Integer) or String convertable to Integer
-  	# 	number of times to use an API Key before
-  	# 	changing to a new one.
-  	#
-    def initialize(
-        api_keys:,
-        rate_count: 5
-      )
-      @api_keys 			= api_keys.is_a?(String) 		? api_keys.split(',') : api_keys
-      @rate_count 		= rate_count.is_a?(Strubg) 	? rate_count.to_i 		: rate_count
-      @counter 				= @rate_count # NOTE: it is a count down counter
-      @current_index 	= 0
-    end
-
-
-    def reset_counter
-      @counter  = @rate_count
-    end
-
-
-    # Use the same API key @rate_count times
-    # When @rate_count is exceeded, switch to a new
-    # api_key.
-    #
-    def api_key
-      if @counter < 1
-        @current_index 	= (@current_index + 1) % @api_keys.length
-        reset_counter
-      end
-
-      @counter -= 1
-      @api_keys[@current_index]
-    end
-  end # class Counter
-
 
   ########################################################
   # Dealing with a limitation in the API keys of a maximum
@@ -76,6 +31,12 @@ module ApiKeyManager
   # In that case, when the counter runs out but there
   # is still time in the period, we have to wait
   # for the period to run out.
+  #
+  # TODO: need to handle multiple AND-related rate limitations
+  #       for example:
+  #         5 per minute    # short term
+  #           AND
+  #         100 per day     # long term
   #
   class Rate
 

@@ -31,7 +31,10 @@ module ApiKeyManager
   	# 	number of times to use an API Key before
   	# 	changing to a new one.
   	#
-    def initialize(api_keys, rate_count=5)
+    def initialize(
+        api_keys:,
+        rate_count: 5
+      )
       @api_keys 			= api_keys.is_a?(String) 		? api_keys.split(',') : api_keys
       @rate_count 		= rate_count.is_a?(Strubg) 	? rate_count.to_i 		: rate_count
       @counter 				= @rate_count # NOTE: it is a count down counter
@@ -68,10 +71,19 @@ module ApiKeyManager
   # When the count has been used within the specified period of time,
   # then it is time to use a new API key.
   #
+  # Sometimes rate limited APIs are triggered on
+  # the incoming IP Address as well as the API Key.
+  # In that case, when the counter runs out but there
+  # is still time in the period, we have to wait
+  # for the period to run out.
+  #
   class Rate
 
     # api_keys (Array of String) or CSV String
     #   of rate limited API Keys.
+    #
+    # delay (Boolean) sleep when there is time
+    #   left in the period but the counter has run out
     #
     # rate_count (Integer) or String convertable to Integer
     #   number of times to use an API Key before
@@ -81,13 +93,22 @@ module ApiKeyManager
     #   number of seconds to use an API Key before
     #   changing to a new one.
     #
-    def initialize(api_keys, rate_count=5, rate_period=60)
+    def initialize(
+        api_keys:,
+        delay:      false,
+        rate_count:   5,
+        rate_period: 60
+      )
       @api_keys       = api_keys.is_a?(String)  ? api_keys.split(',') : api_keys
+
+      @delay          = delay
 
       @rate_count     = rate_count.is_a?(String)  ? rate_count.to_i   : rate_count
       @rate_period    = rate_period.is_a?(String) ? rate_period.to_i  : rate_period
 
-      reset_timer
+      @start_timer  = Time.now.to_i
+      @end_timer    = @start_timer - 1 # prevent delay
+
       reset_counter
 
       @current_index  = 0
@@ -100,7 +121,15 @@ module ApiKeyManager
 
 
     def reset_timer
-      @start_timer  = Time.now.to_i
+      now = Time.now.to_i
+
+      if @delay && now < @end_timer
+        delta = @end_timer - now + 2 # MAGIC: 2 is a WAG fudge factor
+        sleep(delta) # FIxME: This stops everything; need an async solution
+        now = Time.now.to_i
+      end
+
+      @start_timer  = now
       @end_timer    = @start_timer + @rate_period
     end
 

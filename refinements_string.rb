@@ -19,6 +19,11 @@ module Refinements
     def as_hex
       self.bytes.map { |byte| sprintf('%02x', byte) }.join(' ')
     end
+
+    # Is the String a numeric?
+    def numeric?
+      self.match(/\A[+-]?\d+(\.\d+)?\z/) != nil
+    end
   end # refine String do
 
 end # module Refinements

@@ -8,6 +8,18 @@ class String
 
   alias :old_reverse :reverse
 
+
+  ################################################################
+  ## Is the String a numeric? If must have all digits and may
+  ## start with a sign and may contain a decimal point.
+  ## If it has a decimal point it mush have at least one digit
+  ## after the decimal point.
+
+  def numeric?
+    self.match(/\A[+-]?\d+(\.\d+)?\z/) != nil
+  end
+
+
   ################################################################
   ## Removes a_string from self
 

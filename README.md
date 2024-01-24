@@ -1,13 +1,11 @@
-###############################################################
-###
-##  File: README.txt
-##  Desc: Describes the contents of this directory
-#
+# lib/ruby
 
 This is a bunch of OLD/REALLY OLD stuff that might still be
 a little useful to some future projects.  Many of the files
 were developed under Ruby version 1.8.7.  Some have been
 used with projects under v1.9.
+
+BUT, there is also some new stuff that works well ans is backed by unit tests.
 
 I'm not sure which work and which do not.
 
@@ -21,6 +19,7 @@ ballistics/ ................ general utilities for simple ballistics
 bash_system.rb
 bible_book_names.rb
 cache.rb
+call_tracer.rb ............. log a method call tree during execution
 change_file_cmdts.rb
 checked_url.rb
 coordinates/ .............. 3D coordinate system conversions
@@ -31,11 +30,13 @@ date_by_example.rb
 date_helpers.rb
 date_transformer.rb
 debug_me_ivars.rb
+decision_tree.rb .......... has a failing test
 destructure.rb
 diff.rb
 dirty_distance.rb
 docx_helpers.rb
 dst_dates.rb
+easter_sunday.rb ................... Calcuate Easter for any given year
 extract_name_from_email_address.rb
 feature_toggle.rb
 find_files.rb
@@ -92,7 +93,7 @@ stdout_peeker.rb
 sycamore_helpers.rb
 system_package.rb
 tasks/ ...................... needs to be moved to rake_tasks/
-tests/ ...................... unit tests for some of thies libraries
+tests/ ...................... unit tests for some of these libraries
 timed_semaphore.rb
 timeout_queue.rb
 time_stamp.rb

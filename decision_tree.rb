@@ -1,6 +1,7 @@
 # lib/ruby/decision_tree.rb
 # See: https://www.fastruby.io/blog/cart-decision-tree-in-ruby.html
 
+require 'csv'
 
 class DecisionTree
   attr_accessor :left, :right, :split_feature, :split_threshold, :label
@@ -113,4 +114,46 @@ class DecisionTree
     gini_right = calculate_gini(r_indices, labels)
     l_weight * gini_left + r_weight * gini_right
   end
+
+  ###############################################
+  ## Class Methods
+
+  # Define a method to import from CSV
+  def self.import(csv_file_path)
+    data = []
+    labels = []
+    features = nil
+
+    CSV.foreach(csv_file_path, headers: true) do |row|
+      # Convert the row to a hash
+      row_data = row.to_h
+      
+      # Extract features from the headers once
+      if features.nil?
+        features = row_data.keys[0...-1]  # Assume the last column is the label
+      end
+      
+      # Extract feature values and label for each row
+      data << features.map { |feature| row_data[feature] }
+      labels << row_data.values.last
+    end
+
+    return data, labels, features
+  end 
 end
+
+__END__
+
+csv_file_path = "tests/decision_tree_data.csv"
+
+
+# Import data and labels from CSV
+training_data, labels, features = DecisionTree.import(csv_file_path)
+
+# Creating an instance of DecisionTree
+tree = DecisionTree.new
+
+# Train tree using the imported data and labels
+tree.train(training_data, labels, max_depth: 3)
+
+# Now the `tree` is trained and can be used for predictions

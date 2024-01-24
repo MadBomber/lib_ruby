@@ -1,0 +1,15 @@
+Outlook,Temperature,Humidity,Wind,Gameplay?
+Sunny,High,High,Weak,False
+Sunny,High,High,Strong,False
+Cloudy,High,High,Weak,True
+Rainy,Mild,High,Weak,True
+Rainy,Low,Normal,Weak,True
+Rainy,Low,Normal,Strong,False
+Cloudy,Low,Normal,Strong,True
+Sunny,Mild,High,Weak,False
+Sunny,Low,Normal,Weak,True
+Rainy,Mild,Normal,Weak,True
+Sunny,Mild,Normal,Strong,True
+Cloudy,Mild,High,Strong,True
+Cloudy,High,Normal,Weak,True
+Rainy,Mild,High,Strong,False

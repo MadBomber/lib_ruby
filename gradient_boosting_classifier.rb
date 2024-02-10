@@ -14,8 +14,9 @@ class GradientBoostingClassifier
     @trees = []
     @initial_prediction = nil
   end
-  
-  def train
+
+
+  def train(data, labels)
     positive_probability = labels.count(1).to_f / labels.size
     @initial_prediction = Math.log(positive_probability / (1 - positive_probability))
     residuals = Array.new(labels.size, @initial_prediction)
@@ -26,20 +27,22 @@ class GradientBoostingClassifier
       pseudo_residuals = labels.zip(probabilities).map { |y, prob| y - prob }
 
       tree = DecisionTree.new
-      tree.train(data, pseudo_residuals, max_tree_depth)
+      tree.train(data, pseudo_residuals, @max_tree_depth)  # Ensure max_tree_depth attribute is properly used
       @trees << tree
 
+      # Iterate through data for predictions and update residuals
       data.each_with_index do |sample, index|
-        tree_prediction = tree.predict(sample)
+        tree_prediction = tree.predict(sample, 0)  # Providing 0 as a default label
         residuals[index] += @learning_rate * tree_prediction
       end
     end
   end
 
+
   def predict(sample)
     log_odds = @initial_prediction
     @trees.each do |tree|
-      prediction = tree.predict(sample, 0)
+      prediction = tree.predict(sample, 0)  # Providing 0 as default prediction
       log_odds += @learning_rate * prediction
     end
 

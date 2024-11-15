@@ -1,5 +1,7 @@
 # ~/lib/ruby/bm_report.rb
 
+require 'tty-table'
+
 # Print a pretty benchmark report
 #
 # results is an Array of test_case benchmarks

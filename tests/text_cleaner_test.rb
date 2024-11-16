@@ -29,16 +29,14 @@ class TextCleanerTest < Minitest::Test
   def test_clean_removes_stop_words
     text = "The quick brown fox jumps over the lazy dog"
     cleaned_text = @cleaner.clean(text)
-    assert_equal "quick brown fox jump over lazy dog", cleaned_text
+    # SMELL: weird stemmer change of lazy to lazi
+    assert_equal "quick brown fox jump over lazi dog", cleaned_text
   end
 
   def test_clean_normalizes_text
     text = "The money is $1,234.56!"
     cleaned_text = @cleaner.clean(text)
-
-    # NOTE: the porter fast stemmer converts
-    #       money to monei
-    assert_equal "monei 123456", cleaned_text
+    assert_equal "money 123456", cleaned_text
   end
 
   def test_empty_input

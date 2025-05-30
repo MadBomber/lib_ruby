@@ -8,6 +8,21 @@ class String
 
   alias :old_reverse :reverse
 
+  ################################################################
+  ## Extensions to the include? method
+  ## substrings is expected to be an Array of Strings but it
+  ## can also be a String
+
+  def include_all?(substrings)
+    Array(substrings).all? { |substring| self.include?(substring) }
+  end
+  alias :all? :inlude_all?
+
+  def include_any?(substrings)
+    Array(substrings).any? { |substring| self.include?(substring) }
+  end
+  alias :any? :include_any?
+
 
   ################################################################
   ## Is the String a numeric? If must have all digits and may
@@ -251,5 +266,3 @@ class String
   end
 
 end ## end of class String
-
-

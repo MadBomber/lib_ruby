@@ -1,5 +1,7 @@
 # ~/lib/ruby/hookable.rb
 # A way of adding before, after, and around hooks to methods in a class
+# After I wrote this I found out that there is an old gem "hook" that
+# provides similar functionality. https://github.com/moonmaster9000/hook
 
 module Hookable
   def self.included(base)
@@ -105,4 +107,3 @@ module Hookable
     end
   end
 end
-

@@ -1,18 +1,18 @@
 ##############################################
 ###
-##  File: refinements_fixnum.rb
-##  Desc: some common refinements on the Fixnum class
+##  File: refinements_integer.rb
+##  Desc: some common refinements on the Integer class
 #
 
 module Refinements
 
-  refine ::Fixnum do
+  refine ::Integer do
 
     def humanize(comma=',')
       self.to_s.reverse.gsub(/(\d{3})(?=\d)/, "\\1#{comma}").reverse
     end
 
-  end # refine Fixnum do
+  end # refine Integer do
 
 end # module Refinements
 

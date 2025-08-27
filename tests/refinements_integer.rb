@@ -1,13 +1,13 @@
 #!/usr/bin/env ruby
-# tests/refinements_fixnum.rb
+# tests/refinements_integer.rb
 
 require 'minitest/autorun'
 require "minitest/reporters"
 Minitest::Reporters.use! Minitest::Reporters::DefaultReporter.new
 
-require_relative '../refinements_fixnum.rb'
+require_relative '../refinements_integer.rb'
 
-class TestRefinementsFixnum < Minitest::Test
+class TestRefinementsInteger < Minitest::Test
 
   using Refinements
 

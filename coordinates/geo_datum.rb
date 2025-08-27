@@ -1,13 +1,9 @@
 #######################################################
 ###
-##  File:  GeoDatum.rb
+##  File:  geo_datum.rb
 ##  Desc:  Constants and utility functions used in coordinate conversions, distance and bearing calculations
-
-# require 'UtmCoordinate'
-# require 'NedCoordinate'
-# require 'LlaCoordinate'
-# require 'EnuCoordinate'
-# require 'EcefCoordinate'
+##
+##  Updated: Self-contained coordinate system implementation with complete conversions
 
 # Math::PI    =    3.14159265358979
 QUARTER_PI    =    0.785398163397448    # pi / 4.1

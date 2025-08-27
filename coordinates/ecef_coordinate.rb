@@ -1,122 +1,186 @@
 #############################
-## Earth-centric, Earth-fixed
+## Earth-Centered, Earth-Fixed
+##
+## Updated: Complete orthogonal coordinate conversions
 
-require 'GeoDatum'
+require_relative 'geo_datum'
 
 class EcefCoordinate
-
   attr_accessor :x, :y, :z
 
   def initialize(x = 0.0, y = 0.0, z = 0.0)
-  
-    if 'Array' == x.class.to_s
-      @x = x[0]
-      @y = x[1]
-      @z = x[2]
+    if x.is_a?(Array)
+      @x = x[0].to_f
+      @y = x[1].to_f
+      @z = x[2].to_f
     else
-      @x = x
-      @y = y
-      @z = z
+      @x = x.to_f
+      @y = y.to_f
+      @z = z.to_f
     end
+  end
+
+  # Convert to LLA coordinates
+  def to_lla(datum = WGS84)
+    require_relative 'lla_coordinate'
     
-  end ## initialize
-  
-  ##########################################################################
-  def to_lla
-  
-    require 'LlaCoordinate'
-
-    a  = WGS84.a        # WGS­84 semi-major axis (equatorial) radius in meters
-    b  = WGS84.b        # WGS­84 semi-minor axis (polar) radius in meters
-    f  = WGS84.f
-    e  = WGS84.e        # eccentricity of ellipsoid
-    e2 = WGS84.e2
+    a  = datum.a        # Semi-major axis
+    e2 = datum.e2       # Eccentricity squared
     
-    small_delta = 0.00000001  # Used for testing convergance
+    small_delta = 1e-12  # Convergence threshold
 
-    longitude   = Math.atan2(y, x)         # long = atan(y,x) - direct
-    longitude   = longitude * DEG_PER_RAD  # convert to degrees
+    longitude = Math.atan2(@y, @x)
+    longitude_deg = longitude * DEG_PER_RAD
+
+    # Iterative method for latitude and altitude
+    p = Math.sqrt(@x**2 + @y**2)
     
-    h, flag, j = 0, 0 ,0                   # initialize
-    n          = a
+    # Initial guess for latitude
+    latitude = Math.atan2(@z, p * (1 - e2))
+    altitude = 0.0
     
-    p        = Math.sqrt( x**2 + y**2)
-    sin_lat  = z / ( n * ( 1 - e2 ) + h)            # First iteration
-    latitude = Math.atan( ( z + e2 * n * sin_lat) / p)
-    n        = a / ( Math.sqrt(1 - e2 * (sin_lat**2) ))
-    prev_alt = ( p / Math.cos(latitude) ) - n
-    prev_lat = latitude * DEG_PER_RAD
+    max_iterations = 100
+    iteration = 0
     
-    # TODO: This while loop can be optimized
-    while (flag < 2)  # do at least 100 iterations
-      flag      = 0
-      sin_lat   = z / ( n * ( 1 - e2 ) + h)
-      latitude  = Math.atan( (z + e2 * n * sin_lat) / p)
-      n         = a / (Math.sqrt(1 - e2 * (sin_lat**2) ) )
-      altitude  = ( p / Math.cos(latitude) ) - n
-      latitude  = latitude * DEG_PER_RAD
-
-      flag = 1        if (prev_alt - altitude).abs < small_delta
-      flag = flag + 1 if (prev_lat - latitude).abs < small_delta
-
-      j = j + 1
-
-      flag = 2 if j >= 100
-
-      prev_alt = altitude
-      prev_lat = latitude
+    loop do
+      iteration += 1
+      prev_latitude = latitude
+      prev_altitude = altitude
+      
+      sin_lat = Math.sin(latitude)
+      cos_lat = Math.cos(latitude)
+      
+      n = a / Math.sqrt(1 - e2 * sin_lat**2)
+      altitude = (p / cos_lat) - n
+      latitude = Math.atan2(@z, p * (1 - e2 * n / (n + altitude)))
+      
+      # Check convergence
+      lat_diff = (latitude - prev_latitude).abs
+      alt_diff = (altitude - prev_altitude).abs
+      
+      break if lat_diff < small_delta && alt_diff < small_delta
+      break if iteration >= max_iterations
     end
 
-    return LlaCoordinate.new(latitude, longitude, altitude)
-    
-  end ## def to_lla
-  
-  ############################################################
-  def to_ned
-    require 'NedCoordinate'
-    ned = NedCoordinate.new  
-  end ## def to_ned
+    latitude_deg = latitude * DEG_PER_RAD
+    LlaCoordinate.new(latitude_deg, longitude_deg, altitude)
+  end
 
-  ############################################################
-  ## convert ECEF coordinates to local east, north, up 
-  def to_enu(ecef_reference_position)
+  # Create from LLA coordinates
+  def self.from_lla(lla, datum = WGS84)
+    require_relative 'lla_coordinate'
+    raise ArgumentError, "Expected LlaCoordinate" unless lla.is_a?(LlaCoordinate)
     
-    raise ECEF_Reference_Position_Required unless ecef_reference_position.class.to_s == 'EcefCoordinate'
+    lla.to_ecef(datum)
+  end
+
+  # Convert to ENU coordinates relative to a reference ECEF point
+  def to_enu(reference_ecef, reference_lla = nil)
+    require_relative 'enu_coordinate'
+    raise ArgumentError, "Expected EcefCoordinate" unless reference_ecef.is_a?(EcefCoordinate)
     
-    require 'EnuCoordinate'
+    # If reference LLA not provided, compute it
+    if reference_lla.nil?
+      require_relative 'lla_coordinate'
+      reference_lla = reference_ecef.to_lla
+    end
     
-    x_ref = ecef_reference_position.x
-    y_ref = ecef_reference_position.y
-    z_ref = ecef_reference_position.z
+    # Calculate differences
+    delta_x = @x - reference_ecef.x
+    delta_y = @y - reference_ecef.y
+    delta_z = @z - reference_ecef.z
     
-    phiP     = Math.atan2(z_ref, Math.sqrt(x_ref**2 + y_ref**2))
-    sin_phiP = Math.sin(phiP)
-    cos_phiP = Math.cos(phiP)
+    # Reference point's geodetic coordinates in radians
+    lat_rad = reference_lla.lat * RAD_PER_DEG
+    lon_rad = reference_lla.lng * RAD_PER_DEG
     
-    lambda   = Math.atan2(y_ref, x_ref)
-    sin_lamda= Math.sin(lamda)
-    cos_lamda= Math.cos(lamda)
+    sin_lat = Math.sin(lat_rad)
+    cos_lat = Math.cos(lat_rad)
+    sin_lon = Math.sin(lon_rad)
+    cos_lon = Math.cos(lon_rad)
     
-    delta_x = @x - x_ref
-    delta_y = @y - y_ref
-    delta_z = @z - z_ref
+    # Transform to ENU coordinates
+    e = -sin_lon * delta_x + cos_lon * delta_y
+    n = -sin_lat * cos_lon * delta_x - sin_lat * sin_lon * delta_y + cos_lat * delta_z
+    u = cos_lat * cos_lon * delta_x + cos_lat * sin_lon * delta_y + sin_lat * delta_z
+    
+    EnuCoordinate.new(e, n, u)
+  end
 
-    sin_lamda_times_delta_y = sin_lamda * delta_y
-    cos_lamda_times_delta_x = cos_lamda * delta_x
-   
-    e = - sin_lamda * delta_x + cos_lamda * delta_y
-    n = - sin_phiP  * cos_lamda_times_delta_x - sin_phiP * sin_lamda_times_delta_y + cos_phiP * delta_z
-    u = cos_phiP    * cos_lamda_times_delta_x + cos_phiP * sin_lamda_times_delta_y + sin_phiP * delta_z
+  # Create from ENU coordinates relative to a reference point
+  def self.from_enu(enu, reference_ecef, reference_lla = nil)
+    require_relative 'enu_coordinate'
+    raise ArgumentError, "Expected EnuCoordinate" unless enu.is_a?(EnuCoordinate)
+    raise ArgumentError, "Expected EcefCoordinate" unless reference_ecef.is_a?(EcefCoordinate)
+    
+    enu.to_ecef(reference_ecef, reference_lla)
+  end
 
-    return EnuCoordinate.new(e, n, u)
+  # Convert to NED coordinates relative to a reference ECEF point
+  def to_ned(reference_ecef, reference_lla = nil)
+    require_relative 'ned_coordinate'
+    require_relative 'enu_coordinate'
+    
+    # Convert to ENU first, then to NED
+    enu = self.to_enu(reference_ecef, reference_lla)
+    enu.to_ned
+  end
 
-  end ## def to_enu
+  # Create from NED coordinates relative to a reference point
+  def self.from_ned(ned, reference_ecef, reference_lla = nil)
+    require_relative 'ned_coordinate'
+    raise ArgumentError, "Expected NedCoordinate" unless ned.is_a?(NedCoordinate)
+    raise ArgumentError, "Expected EcefCoordinate" unless reference_ecef.is_a?(EcefCoordinate)
+    
+    ned.to_ecef(reference_ecef, reference_lla)
+  end
 
-  ############################################################
-  def to_utm
-    require 'UtmCoordinate'
-    utm = UtmCoordinate.new
-  end ## def to_utm
+  # Convert to UTM coordinates
+  def to_utm(datum = WGS84)
+    require_relative 'utm_coordinate'
+    
+    # Convert through LLA
+    lla = self.to_lla(datum)
+    lla.to_utm(datum)
+  end
 
-end ## class EcefCoordinate
+  # Create from UTM coordinates
+  def self.from_utm(utm, datum = WGS84)
+    require_relative 'utm_coordinate'
+    raise ArgumentError, "Expected UtmCoordinate" unless utm.is_a?(UtmCoordinate)
+    
+    # Convert through LLA
+    lla = utm.to_lla(datum)
+    lla.to_ecef(datum)
+  end
 
+  # Utility methods
+  def to_s
+    "#{@x}, #{@y}, #{@z}"
+  end
+
+  def to_a
+    [@x, @y, @z]
+  end
+
+  def ==(other)
+    return false unless other.is_a?(EcefCoordinate)
+    
+    delta_x = (@x - other.x).abs
+    delta_y = (@y - other.y).abs
+    delta_z = (@z - other.z).abs
+    
+    delta_x <= 1e-6 && delta_y <= 1e-6 && delta_z <= 1e-6
+  end
+
+  # Calculate distance to another ECEF point
+  def distance_to(other)
+    raise ArgumentError, "Expected EcefCoordinate" unless other.is_a?(EcefCoordinate)
+    
+    dx = @x - other.x
+    dy = @y - other.y
+    dz = @z - other.z
+    
+    Math.sqrt(dx**2 + dy**2 + dz**2)
+  end
+end

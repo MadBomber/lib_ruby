@@ -1,108 +1,97 @@
-# lib/ruby
+ # lib/ruby
 
-This is a bunch of OLD/REALLY OLD stuff that might still be
-a little useful to some future projects.  Many of the files
-were developed under Ruby version 1.8.7.  Some have been
-used with projects under v1.9.
+ A collection of Ruby utility libraries, extensions, and scripts—many dating back to Ruby 1.8.7, some modern and backed by unit tests.
 
-BUT, there is also some new stuff that works well ans is backed by unit tests.
+ ## Table of Contents
+ - [Overview](#overview)
+ - [Installation](#installation)
+ - [Getting Started](#getting-started)
+ - [Modules & Utilities](#modules--utilities)
+   - [ActiveRecord Extensions](#activerecord-extensions)
+   - [Algorithms & Data Structures](#algorithms--data-structures)
+   - [Coordinate Systems](#coordinate-systems)
+   - [Shell & System Utilities](#shell--system-utilities)
+   - [Feature Toggles & Workflow](#feature-toggles--workflow)
+   - [Miscellaneous Utilities](#miscellaneous-utilities)
+ - [Examples](#examples)
+ - [Testing](#testing)
+ - [Contributing](#contributing)
+ - [License](#license)
 
-I'm not sure which work and which do not.
+ ## Overview
 
-active_record_better_native_database_types.rb
-active_record_extensions/
-aliases_of.rb
-asciitree.rb
-assertions.rb
-bag_of_words.rb
-ballistics/ ................ general utilities for simple ballistics
-bash_system.rb
-bible_book_names.rb
-cache.rb
-call_tracer.rb ............. log a method call tree during execution
-change_file_cmdts.rb
-checked_url.rb
-coordinates/ .............. 3D coordinate system conversions
-crystal_compatibility.rb
-css_class_names_helper.rb
-data_structures_101/ ...... sorts, queques, trees, locks etc.
-date_by_example.rb
-date_helpers.rb
-date_transformer.rb
-debug_me_ivars.rb
-decision_tree.rb .......... has a failing test
-destructure.rb
-diff.rb
-dirty_distance.rb
-docx_helpers.rb
-dst_dates.rb
-easter_sunday.rb ................... Calcuate Easter for any given year
-extract_name_from_email_address.rb
-feature_toggle.rb
-find_files.rb
-formatted_dump.rb
-Gemfile
-geohash12.rb
-.gitignore
-hamming_distance.rb
-hash_recursive_merge.rb
-internet_connected.rb
-key_value_junk/ .............. memcachd junk; use redis!
-levenshtein_matrix.rb
-levenshtein_recusive.rb
-linked_list.rb
-load_gems.rb
-logger_junk.rb
-mods/ ....................... additions to basic system classes
-my_delegator.rb
-ngram.rb
-options.rb
-pancake_sort.rb
-pashua.rb
-password_validator.rb
-pathname_helpers.rb
-pg_tools.rb
-phone_verification_service.rb
-port_publisher.rb
-powerball.rb
-priority_queue.rb
-process_later.rb
-rake_task_arguments.rb
-rake_tasks/ ..................... not so common tasks for rake
-random_an.rb
-rangify.rb
-raw_sql.rb
-README.txt
-redis_mutex.rb
-refinements_bignum.rb
-refinements_file.rb
-refinements_fixnum.rb
-refinements_hash.rb
-refinements_set.rb
-refinements_string.rb
-report_builder.rb
-repubsub.rb
-rethinkdb_helper.rb
-s3_store.rb
-s_compatibility.rb
-send_chain.rb
-simple_feature_flags.rb
-stats_collecter.rb
-stderr_peeker.rb
-stdout_peeker.rb
-sycamore_helpers.rb
-system_package.rb
-tasks/ ...................... needs to be moved to rake_tasks/
-tests/ ...................... unit tests for some of these libraries
-timed_semaphore.rb
-timeout_queue.rb
-time_stamp.rb
-time_this.rb
-truth_or_consequences.rb
-user_location.rb
-variable_name_of.rb
-version_model.rb
-wcml_helpers.rb
-wrapable.rb
-year_month.rb
+ This repository bundles a diverse set of Ruby-based helpers:
+ - **Legacy code** (Ruby 1.8/1.9) that may require updating.
+ - **Modern utilities**, many backed by unit tests.
+ - **Experimental and demo scripts**, educational rather than production-ready.
+
+ ## Installation
+
+ Use Bundler or clone and load files directly:
+
+ ```bash
+ git clone https://github.com/yourorg/lib-ruby.git
+ cd lib-ruby
+ bundle install
+ ```
+
+ ## Getting Started
+
+ Require modules individually:
+ ```ruby
+ require 'data_structures_101/priority_queue'
+ require 'coordinates/utm_coordinate'
+ require 'password_validator'
+ ```
+
+ Or load all utilities:
+ ```ruby
+ Dir['lib/**/*.rb'].each { |f| require_relative f }
+ ```
+
+ ## Modules & Utilities
+
+ ### ActiveRecord Extensions
+ - `active_record_better_native_database_types.rb` — Enhanced DB type mapping.
+ - `active_record_extensions/` — Autowire, add comments, and other AR extensions.
+
+ ### Algorithms & Data Structures
+ - `data_structures_101/` — Queues, locks, and sorting algorithms.
+ - `priority_queue.rb`, `linked_list.rb`, `hash_recursive_merge.rb`.
+ - Educational demos: `pancake_sort.rb`, `bogosort.rb`, `random_forest_classifier.rb`.
+
+ ### Coordinate Systems
+ - `coordinates/` — Convert between UTM, MGRS, web Mercator, British National Grid, and more.
+
+ ### Shell & System Utilities
+ - `bash_system.rb`, `shell_command_executor.rb` — Secure shell execution.
+ - Rake helpers: `tasks/`, `rake_tasks/`.
+
+ ### Feature Toggles & Workflow
+ - `simple_feature_flags.rb`, `feature_toggle.rb` — Runtime toggles.
+ - `simple_flow.rb` — Build chained workflows.
+
+ ### Miscellaneous Utilities
+ - Date helpers: `date_helpers.rb`, `easter_sunday.rb`, `previous_dow.rb`.
+ - String and Hash refinements: `mods/`, `refinements_*.rb`.
+ - `password_validator.rb`, `uuidv7.rb`, `cache.rb`, `diff.rb`.
+
+ ## Examples
+
+ See the `examples/` directory for sample scripts demonstrating usage patterns.
+
+ ## Testing
+
+ Run unit tests under `tests/`:
+ ```bash
+ bundle exec rake test
+ ```
+
+ ## Contributing
+
+ Pull requests welcome! Please follow the [Improvement Plan](improvement_plan.md), run RuboCop and tests, and submit PRs.
+
+ ## License
+
+ This project does not include a license file. Please add `LICENSE` to clarify usage rights.
 

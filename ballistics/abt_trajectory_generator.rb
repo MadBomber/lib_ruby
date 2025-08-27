@@ -1,9 +1,10 @@
 ################################################################
 ###
 ##  File:  AbtTrajectoryGenerator.rb
-##  Desc:  Generates a trajectory for an air-breathing threat.  The trajectory
+##  ABT = Air-Breathing Target
+##  Desc:  Generates a trajectory for an air-breathing target.  The trajectory
 ##         has no dog-legs.  It is a straight flight path from launch point to impact
-##         point.  There is an assumed climb and dive phase with a cruse at altitude between
+##         point.  There is an assumed climb and dive phase with a cruise at altitude between
 ##         the climb and dive.
 #
 

@@ -1,5 +1,5 @@
 require 'minitest/autorun'
-require_relative 'simple_flow' # Make sure this points to the file where SimpleFlow module is defined.
+require_relative '../simple_flow' # Make sure this points to the file where SimpleFlow module is defined.
 
 module SimpleFlow
   class TestSimpleFlow < Minitest::Test

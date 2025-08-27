@@ -7,9 +7,9 @@ Minitest::Reporters.use! Minitest::Reporters::DefaultReporter.new
 
 require_relative '../refinements_bignum.rb'
 
-class TestRefinementsFixnum < Minitest::Test
+class TestRefinementsBignum < Minitest::Test
 
-  using Refinements
+  using RefinementsBignum
 
   def setup
     @number = 934361079326356530741942970523610389 

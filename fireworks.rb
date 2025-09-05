@@ -274,15 +274,222 @@ def fireworks(how_many = 7, simultaneous = false)
   sleep 0.08
 end
 
+def display_madbomber_finale(fade_out=false)
+  require "io/console"
+  height, width = IO.console.winsize
+
+  # Block letter representation of "MadBomber"
+  letters = {
+    'M' => [
+      "█   █",
+      "██ ██",
+      "█ █ █",
+      "█   █",
+      "█   █"
+    ],
+    'a' => [
+      "     ",
+      " ███ ",
+      "█  █ ",
+      "████ ",
+      "█  █ "
+    ],
+    'd' => [
+      "   █ ",
+      "   █ ",
+      " ███ ",
+      "█  █ ",
+      " ███ "
+    ],
+    'B' => [
+      "████ ",
+      "█   █",
+      "████ ",
+      "█   █",
+      "████ "
+    ],
+    'o' => [
+      "     ",
+      " ███ ",
+      "█   █",
+      "█   █",
+      " ███ "
+    ],
+    'm' => [
+      "     ",
+      "██ █ ",
+      "█ █ █",
+      "█ █ █",
+      "█   █"
+    ],
+    'b' => [
+      "█    ",
+      "█    ",
+      "████ ",
+      "█   █",
+      "████ "
+    ],
+    'e' => [
+      "     ",
+      " ███ ",
+      "█████",
+      "█    ",
+      " ███ "
+    ],
+    'r' => [
+      "     ",
+      "████ ",
+      "█   █",
+      "█    ",
+      "█    "
+    ]
+  }
+
+  # ANSI colors for rainbow effect
+  colors = [
+    "\e[91m",  # bright red
+    "\e[93m",  # bright yellow
+    "\e[92m",  # bright green
+    "\e[96m",  # bright cyan
+    "\e[94m",  # bright blue
+    "\e[95m",  # bright magenta
+    "\e[97m",  # bright white
+  ]
+  reset = "\e[0m"
+
+  text = "MadBomber"
+  letter_height = 5
+
+  # Calculate total width needed
+  total_width = 0
+  text.chars.each do |char|
+    total_width += (letters[char] ? letters[char][0].length : 5) + 1
+  end
+
+  # Calculate starting position to center text
+  start_x = (width - total_width) / 2
+  start_y = (height - letter_height) / 2
+
+  # Clear screen
+  # system("clear") || system("cls")
+
+  # Create canvas
+  canvas = Array.new(height) { Array.new(width, " ") }
+
+  # Animate the appearance
+  20.times do |frame|
+    canvas = Array.new(height) { Array.new(width, " ") }
+
+    # Draw sparkles around the text area
+    if frame > 5
+      10.times do
+        spark_x = start_x - 5 + rand(total_width + 10)
+        spark_y = start_y - 3 + rand(letter_height + 6)
+        if spark_y >= 0 && spark_y < height && spark_x >= 0 && spark_x < width
+          sparkle = ["✨", "✦", "✧", "★", "·"].sample
+          canvas[spark_y][spark_x] = colors.sample + sparkle + reset
+        end
+      end
+    end
+
+    # Draw the letters with progressive reveal
+    x_offset = 0
+    text.chars.each_with_index do |char, char_idx|
+      next if char_idx * 2 > frame  # Progressive reveal
+
+      letter = letters[char]
+      next unless letter
+
+      color = colors[(char_idx + frame) % colors.length]
+
+      letter.each_with_index do |line, y|
+        line.chars.each_with_index do |pixel, x|
+          if pixel == '█'
+            cy = start_y + y
+            cx = start_x + x_offset + x
+            if cy >= 0 && cy < height && cx >= 0 && cx < width
+              # Add glow effect for later frames
+              if frame > 10 && rand < 0.3
+                canvas[cy][cx] = colors.sample + pixel + reset
+              else
+                canvas[cy][cx] = color + pixel + reset
+              end
+            end
+          end
+        end
+      end
+
+      x_offset += letter[0].length + 1
+    end
+
+    canvas.each { |row| puts row.join("") }
+    sleep 0.1
+  end
+
+  # Hold final display
+  sleep 4
+
+  # Fade out with explosion effect
+  if fade_out
+  5.times do |fade|
+    canvas = Array.new(height) { Array.new(width, " ") }
+
+    # Redraw with increasing sparkles
+    x_offset = 0
+    text.chars.each_with_index do |char, char_idx|
+      letter = letters[char]
+      next unless letter
+
+      color = colors[(char_idx + 20 + fade) % colors.length]
+
+      letter.each_with_index do |line, y|
+        line.chars.each_with_index do |pixel, x|
+          if pixel == '█' && rand > (fade * 0.2)  # Gradually disappear
+            cy = start_y + y
+            cx = start_x + x_offset + x
+            if cy >= 0 && cy < height && cx >= 0 && cx < width
+              if rand < (fade * 0.15)
+                canvas[cy][cx] = colors.sample + ["*", "+", "·"].sample + reset
+              else
+                canvas[cy][cx] = color + pixel + reset
+              end
+            end
+          end
+        end
+      end
+
+      x_offset += letter[0].length + 1
+    end
+
+    # Add explosion particles
+    (fade * 15).times do
+      px = start_x - 10 + rand(total_width + 20)
+      py = start_y - 5 + rand(letter_height + 10)
+      if py >= 0 && py < height && px >= 0 && px < width
+        canvas[py][px] = colors.sample + ["✦", "✧", "★", "·", "*"].sample + reset
+      end
+    end
+
+    canvas.each { |row| puts row.join("") }
+    sleep 0.15
+  end
+  end
+
+  # Final clear
+  # system("clear") || system("cls")
+end
+
 def grand_finale
   # Spectacular ending with many simultaneous fireworks
-  sleep 1
-  fireworks(60, true)
+  sleep 0.5
+  fireworks(30, true)
+  display_madbomber_finale(true)
 end
 
 def fireworks_show(duration = 60)
   # Run fireworks for approximately the specified duration in seconds
   count = (duration / 3).to_i
   fireworks(count, false)
+  display_madbomber_finale
   grand_finale
 end

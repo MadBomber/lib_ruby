@@ -1,0 +1,12 @@
+# ~/lib/ruby/current_time.rb
+# gets the current Time
+
+require "time"
+
+def current_time
+  if defined?(Rails) && Time.zone
+    Time.zone.now
+  else
+    Time.now
+  end
+end

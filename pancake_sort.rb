@@ -6,7 +6,7 @@ class Array
   # This is slow; never use it!
   def pancake_sort!
     (self.size-1).downto(1) do |end_idx|
-      max,      = self[0..end_idx].max
+      max       = self[0..end_idx].max
       max_idx   = self[0..end_idx].index(max)
       next if max_idx == end_idx
 

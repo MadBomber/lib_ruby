@@ -57,20 +57,22 @@ class RSemaphore
       end
     end
 
-# Example Usage
-#    require "RSemaphore"
-    name = 'printer'
+if __FILE__ == $0
+  # Example Usage
+  #    require "RSemaphore"
+  name = 'printer'
 
-    sem = RSemaphore.exists?(ts, name) ? 
-            RSemaphore.find(ts, name) : 
-            RSemaphore.create(ts, name, 3)
+  sem = RSemaphore.exists?(ts, name) ?
+          RSemaphore.find(ts, name) :
+          RSemaphore.create(ts, name, 3)
 
-    puts "#{$$}: requests resource"
-    sem.down
-    puts "#{$$}: resource taken"
-    sleep rand(5)
-    sem.up
-    puts "#{$$}: resource released"
+  puts "#{$$}: requests resource"
+  sem.down
+  puts "#{$$}: resource taken"
+  sleep rand(5)
+  sem.up
+  puts "#{$$}: resource released"
+end
 
 
 

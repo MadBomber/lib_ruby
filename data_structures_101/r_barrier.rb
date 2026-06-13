@@ -32,17 +32,19 @@ class RBarrier
 
 
 
-# Example usage:
-#    require "rbarrier"
-    name = 'barrier'
+if __FILE__ == $0
+  # Example usage:
+  #    require "rbarrier"
+  name = 'barrier'
 
-    barrier = RBarrier.exists?(ts, name) ?
-                RBarrier.find(ts, name) :
-                RBarrier.create(ts, name, 3)
+  barrier = RBarrier.exists?(ts, name) ?
+              RBarrier.find(ts, name) :
+              RBarrier.create(ts, name, 3)
 
-    puts "#{$$}: waiting..."
-    barrier.wait
-    puts "#{$$}: done."
+  puts "#{$$}: waiting..."
+  barrier.wait
+  puts "#{$$}: done."
+end
 
 
 
